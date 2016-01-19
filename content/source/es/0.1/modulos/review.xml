@@ -23,17 +23,17 @@
     <text>
       Ejemplo:
     </text>
-    <code><!-- 
--->{
-    "call" : "Review.GetContent",
-    "currentPage" : 1,
-    "pageSize" : 5,
-    “startdate” : “2015-01-01”,
-    “enddate” : “2015-07-01”,
-    "id" : 5225,
-    “type” : “Espectáculo”
-}<!-- 
-     --></code>
+<code>
+{
+  "call" : "Review.GetContent",
+  "currentPage" : 1,
+  "pageSize" : 5,
+  “startdate” : “2015-01-01”,
+  “enddate” : “2015-07-01”,
+  "id" : 5225,
+  “type” : “Espectáculo”
+}
+</code>
     <subtitle>Parámetros</subtitle>
     <parameters>
       <param>
@@ -92,22 +92,22 @@
     <text>
       Ejemplo:
     </text>
-    <code><!-- 
--->{
-    "call" : "Review.SetContent",
-    "url" : "http://www.lanacion.com.ar/1367418",
-    "relation" : [
-        {
-        "id": 15582, 
-        "type" : "Espectáculo", 
-        "title" : "Espejos Circulares"
-        }
-    ],
-    "categories" : ["Crítica"],
-    “date” : “2015-08-21 13:00:00”
-}<!-- 
-    --></code>
-
+<code>
+{
+  "call" : "Review.SetContent",
+  "url" : "http://www.lanacion.com.ar/1367418",
+  "relation" : [
+      {
+      "id": 15582, 
+      "type" : "Espectáculo", 
+      "title" : "Espejos Circulares"
+      }
+  ],
+  "categories" : ["Crítica"],
+  “date” : “2015-08-21 13:00:00”
+}
+</code>
+    
     <subtitle>Parámetros</subtitle>
     <parameters>
       <param>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+  <page>
+    <title>Módulo User</title>
+    <text>
+      El módulo user tiene como objetivo... DESCRIPCION MODULO
+    </text>
+
+    <subtitle>Recursos disponibles</subtitle>
+    <list>
+      <item><a href="#register">Register</a></item>
+      <item><a href="#login">Login</a></item>
+      <item><a href="#logout">Logout</a></item>
+    </list>
+
+    <method>Register</method>
+    <text>
+      Tipo <arrow_right /> Escritura
+      <br/>
+      Acceso por URL <arrow_right /> No
+    </text>
+    <text>
+       Registra un nuevo usuario.
+    </text>
+    <text>
+      Ejemplo string json php:
+    </text>
+<code>
+$json = '{
+   "call"  : "User.Register",
+   "email" : "hsoto@float.la",
+   "password" : "4lt3rn4t1v4",
+   "first_name" : "Horacio",
+   "last_name"  : "Soto"
+}';
+</code>
+
+    <subtitle>Parámetros</subtitle>
+    <parameters>
+      <param>
+        <name>call</name>
+        <type>String</type>
+        <required>Si</required>
+        <desc>Nombre del método a ser llamado</desc>
+      </param>
+      <param>
+        <name>email</name>
+        <type>String</type>
+        <required>Si</required>
+        <desc>E-mail del usuario</desc>
+      </param>
+      <param>
+        <name>password</name>
+        <type>String</type>
+        <required>Si</required>
+        <desc>Contraseña</desc>
+      </param>
+      <param>
+        <name>first_name</name>
+        <type>String</type>
+        <required>Si</required>
+        <desc>Nombre</desc>
+      </param>
+      <param>
+        <name>last_name</name>
+        <type>String</type>
+        <required>Si</required>
+        <desc>Apellido</desc>
+      </param>
+    </parameters>
+
+    <divider />
+
+
+    <method>Login</method>
+    <text>
+      Tipo <arrow_right /> Solo lectura
+      <br/>
+      <a href="/general/respuestas.xml#acceso-por-url-solo-lectura">Acceso por URL</a> <arrow_right /> Si
+    </text>
+    <text>
+      Login de usuario.
+    </text>
+    <text>
+      Ejemplo string json php:
+    </text>
+<code>
+$json = '{
+   "call"  : "User.Login",
+   "email" : "hsoto@float.la",
+   "password" : "4lt3rn4t1v4"
+}';
+</code>
+    
+    <subtitle>Parámetros</subtitle>
+    <parameters>
+      <param>
+        <name>call</name>
+        <type>String</type>
+        <required>Si</required>
+        <desc>Nombre del método a ser llamado</desc>
+      </param>
+      <param>
+        <name>email</name>
+        <type>String</type>
+        <required>Si</required>
+        <desc>E-mail del usuario</desc>
+      </param>
+      <param>
+        <name>password</name>
+        <type>String</type>
+        <required>Si</required>
+        <desc>Contraseña</desc>
+      </param>
+    </parameters>
+
+    <divider />
+
+
+    <method>Logout</method>
+    <text>
+      Tipo <arrow_right /> Solo lectura
+      <br/>
+      <a href="/general/respuestas.xml#acceso-por-url-solo-lectura">Acceso por URL</a> <arrow_right /> Si
+    </text>
+    <text>
+       Logout.
+    </text>
+    <text>
+      Ejemplo string json php:
+    </text>
+<code>
+$json = '{
+   "call"  : "User.Logout"
+}';
+</code>
+    <subtitle>Parámetros</subtitle>
+    <parameters>
+      <param>
+        <name>call</name>
+        <type>String</type>
+        <required>Si</required>
+        <desc>Nombre del método a ser llamado</desc>
+      </param>
+    </parameters>
+
+    <divider />
+
+  </page>
+</xml>

@@ -24,6 +24,10 @@
 			<source>/modulos/clip.xml</source>
 		</item>
 		<item>
+			<label>Usuarios</label>
+			<source>/modulos/user.xml</source>
+		</item>
+		<item>
 			<label>Personas</label>
 			<source>/modulos/person.xml</source>
 		</item>
