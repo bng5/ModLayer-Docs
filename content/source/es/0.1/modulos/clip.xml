@@ -45,13 +45,13 @@ $json = ‘{
         <name>currentPage</name>
         <type>Integer</type>
         <required>No</required>
-        <desc>Número de página a mostrar. Valor por defecto: 1</desc>
+        <desc>Número de página a mostrar.<br/>Valor por defecto: 1</desc>
       </param>
       <param>
         <name>pageSize</name>
         <type>Integer</type>
         <required>No</required>
-        <desc>Cantidad de ítems por página. Valor por defecto: 10</desc>
+        <desc>Cantidad de ítems por página.<br/>Valor por defecto: 10</desc>
       </param>
       <param>
         <name>startdate</name>
@@ -102,17 +102,17 @@ $json = ‘{
 $json = ‘{
    "call" : "Clip.SetContent",
    "url" : "https://www.youtube.com/watch?v=kC9YNz-h828",
-   "service" : “youtube”,
-   “ext_id” : 111,
-   “ext_type” : “video”
+   "service" : "youtube",
+   "ext_id" : 111,
+   "ext_type" : "video"
 }’;
 
 $json = ‘{
    "call" : "Clip.SetContent",
    "url" : "https://vimeo.com/146064760",
-   "service" : “vimeo”,
-   “ext_id” : 111,
-   “ext_type” : “video”
+   "service" : "vimeo",
+   "ext_id" : 111,
+   "ext_type" : "video"
 }’;
 </code>
     <text>
