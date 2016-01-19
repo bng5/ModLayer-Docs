@@ -73,13 +73,13 @@ $json = ‘{
     <text>
        Respuesta en <mono>XML</mono>
        <box>
-          http://shakespeare.alternativateatral.com/api/Clip.GetContent.xml?currentPage=2
+          <a target="_blank" href="http://shakespeare.alternativateatral.com/api/Clip.GetContent.xml?currentPage=2">http://shakespeare.alternativateatral.com/api/Clip.GetContent.xml?currentPage=2</a>
        </box>
     </text>
     <text>
        Respuesta en <mono>JSON</mono>
        <box>
-          http://shakespeare.alternativateatral.com/api/Clip.GetContent.json?currentPage=2
+          <a target="_blank" href="http://shakespeare.alternativateatral.com/api/Clip.GetContent.json?currentPage=2">http://shakespeare.alternativateatral.com/api/Clip.GetContent.json?currentPage=2</a>
        </box>
     </text>
 
@@ -160,19 +160,19 @@ $json = ‘{
     <text>
        Respuesta en <mono>XML</mono>
        <box>
-          http://shakespeare.alternativateatral.com/api/Clip.SetContent.xml?service=youtube&amp;url=https://www.youtube.com/watch?v=gMc4zowylTg&amp;id=111&amp;type=video
+          <a target="_blank" href="http://shakespeare.alternativateatral.com/api/Clip.SetContent.xml?service=youtube&amp;url=https://www.youtube.com/watch?v=gMc4zowylTg&amp;id=111&amp;type=video">http://shakespeare.alternativateatral.com/api/Clip.SetContent.xml?service=youtube&amp;url=https://www.youtube.com/watch?v=gMc4zowylTg&amp;id=111&amp;type=video</a>
        </box>
        <box>
-         http://shakespeare.alternativateatral.com/api/Clip.SetContent.xml?service=vimeo&amp;url=https://vimeo.com/146064760&amp;id=111&amp;type=video
+         <a target="_blank" href="http://shakespeare.alternativateatral.com/api/Clip.SetContent.xml?service=vimeo&amp;url=https://vimeo.com/146064760&amp;id=111&amp;type=video">http://shakespeare.alternativateatral.com/api/Clip.SetContent.xml?service=vimeo&amp;url=https://vimeo.com/146064760&amp;id=111&amp;type=video</a>
        </box>
     </text>
     <text>
        Respuesta en <mono>JSON</mono>
        <box>
-         http://shakespeare.alternativateatral.com/api/Clip.SetContent.json?service=youtube&amp;url=https://www.youtube.com/watch?v=gMc4zowylTg&amp;id=999&amp;type=video
+         <a target="_blank" href="http://shakespeare.alternativateatral.com/api/Clip.SetContent.json?service=youtube&amp;url=https://www.youtube.com/watch?v=gMc4zowylTg&amp;id=999&amp;type=video">http://shakespeare.alternativateatral.com/api/Clip.SetContent.json?service=youtube&amp;url=https://www.youtube.com/watch?v=gMc4zowylTg&amp;id=999&amp;type=video</a>
        </box>
        <box>
-         http://shakespeare.alternativateatral.com/api/Clip.SetContent.json?service=vimeo&amp;url=https://vimeo.com/146064760&amp;id=111&amp;type=video
+         <a target="_blank" href="http://shakespeare.alternativateatral.com/api/Clip.SetContent.json?service=vimeo&amp;url=https://vimeo.com/146064760&amp;id=111&amp;type=video">http://shakespeare.alternativateatral.com/api/Clip.SetContent.json?service=vimeo&amp;url=https://vimeo.com/146064760&amp;id=111&amp;type=video</a>
        </box>
     </text>
 
@@ -219,13 +219,13 @@ $json = ‘{
     <text>
        Respuesta en <mono>XML</mono>
        <box>
-         http://shakespeare.alternativateatral.com/api/Clip.GetItem.xml?id=23
+         <a target="_blank" href="http://shakespeare.alternativateatral.com/api/Clip.GetItem.xml?id=23">http://shakespeare.alternativateatral.com/api/Clip.GetItem.xml?id=23</a>
        </box>
     </text>
     <text>
        Respuesta en <mono>JSON</mono>
        <box>
-         http://shakespeare.alternativateatral.com/api/Clip.GetItem.json?id=23
+         <a target="_blank" href="http://shakespeare.alternativateatral.com/api/Clip.GetItem.json?id=23">http://shakespeare.alternativateatral.com/api/Clip.GetItem.json?id=23</a>
        </box>
     </text>
 
