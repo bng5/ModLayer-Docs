@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<skin>
+	<name>Documentation</name>
+	<version>1.0</version>
+	<author>Float.la</author>
+
+	
+	<header>
+		<!-- <script>https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js</script> -->
+		<script><skinpath/>/js/prettify.js</script>
+		<css><skinpath/>/css/desktop.css</css>
+		<favicon>/favicon.ico</favicon>
+		<script><skinpath/>/js/jquery-2.1.4.min.js</script>
+
+		<script><skinpath/>/js/app.js</script>
+	</header>
+</skin>

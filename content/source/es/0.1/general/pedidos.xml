@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+  <page>
+    <title>Pedidos</title>
+    
+    <text>
+      El servicio cuenta con recursos del tipo escritura y solo lectura.<br/>
+      Los llamados deberán hacerse a la url del servicio enviando por <mono>POST</mono> un objeto <mono>Json</mono> con los parámetros deseados y la <mono>APIKey</mono> de autenticación en el <mono>HEADER</mono> del pedido.<br/>
+      Los recursos del tipo <i>"solo lectura" </i> <a href="/general/respuestas.xml#acceso-por-url-solo-lectura">se pueden acceder directamente por URL</a>.
+    </text>
+    <subtitle>Autenticación </subtitle>
+    <text>
+      Para poder acceder al servicio es necesario enviar en el <mono>HEADER</mono> del pedido un parametro con el nombre <mono>APIKEY</mono> y el valor de la Apikey otorgada.
+    </text>
+    <code linenums="1"><!-- 
+       -->Host: shakespeare.alternativateatral.com
+<!--   -->Accept: */* 
+<!--   --><b>apikey: 3b215471706c796964217d6153505d </b>
+<!--   -->Content-Length: 50 
+<!--   -->Content-Type: application/x-www-form-urlencoded<!-- 
+     --></code>
+    <divider />
+    <subtitle>Parámetros</subtitle>
+    <text>
+      El servicio espera un objeto <mono>Json</mono> (<a href="/general/respuestas.xml#error-501">bien formado</a>) en el cual  se deberá incluir al menos el atributo <mono>call</mono> que hace referencia al recurso - módulo y método - que se quiere invocar.
+    </text>
+    <code>
+  {
+    "call" : "Review.SetContent", // Requerido
+    // Otros parametros ...
+  }</code>
+    <text>
+      Luego se incluirán los parámetros que sean necesarios y/o requeridos por cada recurso.
+    </text>
+    <text>
+      Los nombres de los recursos de la api pueden contener en el nombre un punto para poder diferenciar el <i>módulo</i> al que se hace referencia.
+      <br/>
+      Permitiendo tener nombres más simples y que pueden llegar a repetirse en distintos módulos.
+    </text>
+    <text>
+      Por ejemplo el llamado <b class="mono">“Review.SetContent”</b> hace referencia al método <b>SetContent</b> del módulo <b><i>Review</i></b>.
+    </text>
+    <text>
+      Dentro del sistema se puede configurar qué módulos y métodos estarán disponibles para ser llamados junto con los parámetros para cada uno. En el caso que se reciba el nombre de un método sin el prefijo, se invocará a la primera ocurrencia de ese nombre de método en la configuración sin validar el módulo.
+      <br/>
+      De esta manera podemos agregar funcionalidad a la api delegando a los módulos la parte del negocio. 
+    </text>
+    
+    <divider />
+  </page>
+</xml>

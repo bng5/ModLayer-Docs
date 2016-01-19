@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+  <page>
+    <title>Módulo Review</title>
+    <text>
+      El módulo review tiene como objetivo importar contenido externo, como críticas de obras, espacios o personas creando una relación con el sistema.
+    </text>
+
+    <subtitle>Recursos disponibles</subtitle>
+    <list>
+      <item><a href="#getcontent">GetContent</a></item>
+      <item><a href="#setcontent">SetContent</a></item>
+      <item>UnSetContent</item>
+      <item>UnSetRelation</item>
+    </list>
+
+    <method>GetContent</method>
+    <text>
+      Tipo <arrow_right /> Solo lectura
+      <br/>
+      Acceso por URL <arrow_right /> Si
+    </text>
+    <text>
+      Ejemplo:
+    </text>
+    <code><!-- 
+-->{
+    "call" : "Review.GetContent",
+    "currentPage" : 1,
+    "pageSize" : 5,
+    “startdate” : “2015-01-01”,
+    “enddate” : “2015-07-01”,
+    "id" : 5225,
+    “type” : “Espectáculo”
+}<!-- 
+     --></code>
+    <subtitle>Parámetros</subtitle>
+    <parameters>
+      <param>
+        <name>call</name>
+        <type>string</type>
+        <required>Si</required>
+        <desc>Nombre del método a ser llamado</desc>
+      </param>
+      <param>
+        <name>currentPage</name>
+        <type>integer</type>
+        <required>No</required>
+        <desc>Página actual del paginado. Valor por defecto: 1.</desc>
+      </param>
+      <param>
+        <name>pageSize</name>
+        <type>integer</type>
+        <required>No</required>
+        <desc>Cantidad de ítems por página. Valor por defecto: 10</desc>
+      </param>
+      <param>
+        <name>startdate</name>
+        <type>String</type>
+        <required>No</required>
+        <desc>Inicio de rango de fecha de los elementos pedidos</desc>
+      </param>
+      <param>
+        <name>enddate</name>
+        <type>String</type>
+        <required>No</required>
+        <desc>Fin de rango de fecha de los elementos pedidos.</desc>
+      </param>
+      <param>
+        <name>id</name>
+        <type>integer</type>
+        <required>No</required>
+        <desc>Id del contenido externo del que se quieren obtener las notas relacionadas.</desc>
+      </param>
+      <param>
+        <name>type</name>
+        <type>string</type>
+        <required>solo si está presente el parámetro “id”</required>
+        <desc>Nombre del tipo de contenido del “id” externo que se desea pedir </desc>
+      </param>
+    </parameters>
+
+    <divider />
+
+
+    <method>SetContent</method>
+    <text>
+      Tipo <arrow_right /> Escritura
+      <br/>
+      Acceso por URL <arrow_right /> No
+    </text>
+    <text>
+      Ejemplo:
+    </text>
+    <code><!-- 
+-->{
+    "call" : "Review.SetContent",
+    "url" : "http://www.lanacion.com.ar/1367418",
+    "relation" : [
+        {
+        "id": 15582, 
+        "type" : "Espectáculo", 
+        "title" : "Espejos Circulares"
+        }
+    ],
+    "categories" : ["Crítica"],
+    “date” : “2015-08-21 13:00:00”
+}<!-- 
+    --></code>
+
+    <subtitle>Parámetros</subtitle>
+    <parameters>
+      <param>
+        <name>call</name>
+        <type>string</type>
+        <required>Si</required>
+        <desc>Nombre del método a ser llamado</desc>
+      </param>
+      <param>
+        <name>url</name>
+        <type>string</type>
+        <required>Si</required>
+        <desc>URL de la nota que se quiere importar</desc>
+      </param>
+      <param>
+        <name>relation</name>
+        <type>Array</type>
+        <required>No</required>
+        <desc>Es un array de objetos. (es condición que contenga al menos 1 objeto)</desc>
+      </param>
+      <param>
+        <name>relation.id</name>
+        <type>integer</type>
+        <required>Si</required>
+        <desc>ID del contenido externo a relacionar</desc>
+      </param>
+      <param>
+        <name>relation.type</name>
+        <type>string</type>
+        <required>Si</required>
+        <desc>Nombre del tipo de contenido. Si no existe se crea automáticamente y se relaciona.</desc>
+      </param>
+      <param>
+        <name>relation.title</name>
+        <type>string</type>
+        <required>Si</required>
+        <desc>Título del contenido externo a relacionar.</desc>
+      </param>
+      <param>
+        <name>categories</name>
+        <type>Array</type>
+        <required>Si</required>
+        <desc>Array de categorías para clasificar la nota importada.<br/> Cada categoría es un string.</desc>
+      </param>
+      <param>
+        <name>date</name>
+        <type>String</type>
+        <required>No</required>
+        <desc>Fecha de la nota a importar. Debe estar en formato datetime.</desc>
+      </param>
+    </parameters>
+
+    <text>
+      Cuando se hace el llamado se procesan los datos de la siguiente manera:
+    </text>
+    <list>
+      <li>Si la nota no existe, se importa el contenido y las imágenes.</li>
+      <li>Si la relación el con ID externo no existe, se agrega. Si ya existe se ignora. Esto permite poder agregar relaciones con nuevos IDs externos para notas ya importadas.</li>
+      <li>Si el tipo del id externo existe, se agrega a la relación. Si no existe se crea y se agrega a la relación.</li>
+      <li>Para cada categoria: si existe se categoriza la nota. Si no existe: se crea y se categoriza la nota.</li>
+    </list>
+    <divider />
+
+
+  </page>
+</xml>

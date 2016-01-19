@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<applicationID>Alternativa API</applicationID>
+	<smtp>smtp.sendgrid.net</smtp>
+
+	<domain>http://local.doc</domain>
+	<images_domain>http://local.doc</images_domain>
+	<timezone>America/Buenos_Aires</timezone>
+
+	<frontend_debug>1</frontend_debug>
+	<contact>desarrollo@float.la</contact>
+
+	<skins>
+		<skin lang="es" default="1">
+			<name>Español</name>
+			<path>/skins/doc_es</path>
+		</skin>
+	</skins>
+
+	<autoload>
+	</autoload>
+
+	<devices>
+		<device name="desktop" directory="desktop" default="1"/>
+		<device name="generic" directory="desktop"/>
+	</devices>
+
+	<rewrite debug="0">
+		<frontend>
+			<rule
+				 match="\/not-found\/404(\/)?(.*)"
+				 apply="FrontDisplayNotFound"
+				 args=""
+			/>
+			<rule
+				 match="(\/|\/index.php)$"
+				 apply="DisplayResource"
+				 args="url=home"
+			/>
+			<rule
+				 match="\/(.*)\.xml"
+				 apply="DisplayResource"
+				 args="url=$1"
+			/>
+			
+			<rule
+				 match="\/not-found\/500(\/)?(.*)"
+				 apply="FrontDisplayError"
+				 args=""
+			/>
+			<rule
+				 match="\/lang\/(.*)"
+				 apply="FrontSetLang"
+				 args="lang=$1"
+			/>
+			<rule
+				 match="\/version\/(.*)"
+				 apply="FrontSetVersion"
+				 args="version=$1"
+			/>
+		</frontend>
+	</rewrite>
+
+</configuration>

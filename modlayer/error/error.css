@@ -1,0 +1,54 @@
+body {
+	background:#dde2e6;
+	font:normal 13px/17px Arial,sans-serif;
+	margin:0;
+	color:#666;
+}
+
+.container {
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	padding:20px;
+	margin:20px auto;
+	border:1px solid #a0a0a0;
+	background:#fff;
+}
+
+.show-grid [class*="span"] {
+    background-color: #f0f0f0;
+    border-radius: 3px 3px 3px 3px;
+    line-height: 17px;
+    min-height: 30px;
+}
+
+.show-grid {background:url('../../../admin/desktop/imgs/logos/modion.jpg') bottom right no-repeat;}
+.show-grid .transparent {background:transparent;}
+.header {padding:0 0 10px 0;}
+.show-grid .padding {display:block;padding:10px;}
+.alert {margin:0 0 15px;}
+
+.span6 h4 {padding:5px 0;}
+
+.accordion {margin-bottom:0;}
+.accordion-body {font-size:11px;}
+
+.codigo .codigo {padding-left:15px;}
+.tag.close {font-size:11px!important;}
+
+.tag {color:blue;}
+.tag.close {
+	display:block;
+	float: none;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 15px;
+    opacity: 1;
+    text-shadow: 0;
+}
+.att {color:#ff0ace;}
+.attname {color:#ff4141;}
+.node {color:brown;}
+
+.codigo img, .codigo a {border:0;}

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+  <page>
+    <title>Respuestas</title>
+    <subtitle>Formato</subtitle>
+    <text>
+      El servicio provee dos formatos disponibles de respuesta <mono>XML</mono> y <mono>JSON</mono>.
+      El formato por defecto es <mono>XML</mono>. <br/>
+      Para obtener la respuesta en formato <mono>JSON</mono> es necesario pedirlo explicitamente con el parámetro “response" : "json” en cualquier pedido.
+    </text>
+
+    <subtitle>Acceso por URL (solo lectura)</subtitle>
+    <text>
+      Los recursos de solo lectura pueden ser accedidos por URL. <br/>
+      Es decir sin utilizar un objeto <mono>JSON</mono> enviado por <mono>POST</mono> y una <mono>apikey</mono> en el header del request.
+    </text>
+    <text>
+      De esta manera es más facil acceder al contenido para mostrar en aplicaciones externas. Y más seguro ya que no se permite el acceso a los métodos de escritura.
+
+      Para obtener datos de esta manera, sobre la URL base del servicio:
+    </text>
+    <box>
+      http://shakespeare.alternativateatral.com/api/
+    </box>
+    <text>
+      Se deberá concatenar el nombre del método y como extensión el formato de respuesta deseado. Ejemplo: 
+    </text>
+    <box>
+      http://shakespeare.alternativateatral.com/api/Review.GetContent.xml
+    </box>
+    <text>
+      mostrará un listado en <mono>XML</mono>, mientras que 
+    </text>
+    <box>
+      http://shakespeare.alternativateatral.com/api/Review.GetContent.json
+    </box>
+    <text>
+      mostrará el mismo resultado en <mono>JSON</mono>. 
+      Los parámetros de cada método se recibirán por <mono>GET</mono> y son los mismos que se describen para cada recurso un objecto <mono>Json</mono>. Ejemplo:
+    </text>
+    <box>
+      http://shakespeare.alternativateatral.com/api/Review.GetContent.xml?id=929&amp;type=Espectáculo
+    </box>
+    
+    <divider />
+    <subtitle>Código</subtitle>
+    <text>
+      Cada respuesta del servicio proveerá un código numérico, ese código representa el estado de la respuesta y puede contener los siguiente valores:
+    </text>
+    <table>
+      <tr>
+        <th width="20%" align="center">Código</th>
+        <th width="80%">Descripción</th>
+      </tr>
+      <tr>
+        <td align="center">200</td>
+        <td>Ok</td>
+      </tr>
+      <tr>
+        <td align="center">400</td>
+        <td>Bad Request: One of the request inputs is not valid</td>
+      </tr>
+      <tr>
+        <td align="center">403</td>
+        <td>Forbidden: The server failed to authenticate the request. Verify that the value of Authorization header is formed correctly.</td>
+      </tr>
+      <tr>
+        <td align="center">404</td>
+        <td>Not Found: The specified resource does not exist.</td>
+      </tr>
+      <tr>
+        <td align="center">416</td>
+        <td>Requested Range Not Satisfiable: The range specified is invalid for the current size of the resource.</td>
+      </tr>
+      <tr>
+        <td align="center">500</td>
+        <td>Internal Server Error: The server encountered an internal error. Please retry the request.</td>
+      </tr>
+      <tr>
+        <td align="center" id="error-501">501</td>
+        <td>Internal Server Error: The json object is not well formed or has errors.</td>
+      </tr>
+      <tr>
+        <td align="center">503</td>
+        <td>Service Unavailable: The server is currently unable to receive requests. Please retry your request.</td>
+      </tr>
+    </table>
+
+    <subtitle>Fecha y hora</subtitle>
+    <text>
+      Junto con el código de la respuesta se incluyen los datos de la fecha, la hora y el tiempo que demoró en ejecutarse el pedido. Los nombres de estos campos son:
+    </text>
+    <text>
+      <b>timestamp</b> <arrow_right /> Fecha y hora en formato linux timestamp.<br/>
+      <b>datetime</b> <arrow_right /> Fecha y hora en formato <mono>YYYY-MM-DD HH:MM</mono>.<br/>
+      <b>runtime</b> <arrow_right /> Tiempo de ejecución en segundos.<br/>
+    </text>
+  </page>
+</xml>

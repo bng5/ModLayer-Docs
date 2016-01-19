@@ -1,0 +1,58 @@
+/*Debug*/
+
+.debug {background:#333;opacity:0.4;position:absolute;top:0;left:0;width:100%;height:25px;z-index:99000!important;display:none;}
+.techoDebug {
+
+	height:1px;
+	color:#fff;
+	line-height:25px;
+	position:fixed;
+	bottom:0;
+	left:0;
+	width:100%;
+	z-index:99001!important;
+	border-bottom:2px solid #353535;
+	border-bottom:2px solid rgba(0,0,0,0.7);
+}
+.techoDebug a {
+	float:left;
+	display:block;
+	position:relative;
+	top:-24px;
+	color:#fff!important;
+	padding:0 10px;
+	margin:0 0 0 30px;
+	background:#353535;
+	background:rgba(0,0,0,0.7);
+}
+
+.xmlContentBack {background:#fff;opacity:1;position:absolute;display:none;z-index:99002;left:0;}
+.xmlContent {overflow:auto;padding:10px;color:#000;position:absolute;z-index:99005;display:none;left:0;}
+
+.xmlContent .codigo {
+	padding-left:12px;
+	font:normal 13px/15px "Courier New",sans-serif;
+	background: url('tab2.gif') no-repeat;
+}
+.xmlContent .codigo a {margin-left:-12px;width:9px;overflow:hidden;}
+
+.xslVariables {float:right;margin:15px 15px 0 0;width:32%;border:1px solid #e2e2e2;padding:10px;}
+.xslVariables h4 {font:bold 14px/16px Arial,sans-serif;margin:5px 0;}
+
+.xmlContent b {font-weight:normal!important;}
+/*.xmlContent b span {color:brown;}*/
+.tag {color:#4D73B0;}
+.tag.close {
+	display:block;
+	float: none;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 15px;
+    opacity: 1;
+    text-shadow: 0;
+}
+.att {color:#ff0ace;}
+.attname {color:#ff4141;}
+.node {color:#4D73B0;}
+
+.codigo img, .codigo a {border:0;}

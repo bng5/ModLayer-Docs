@@ -1,0 +1,39 @@
+<nav version="0.1">
+	<section label="General">
+		<item>
+			<label>Inicio</label>
+			<source>/</source>
+		</item>
+		<item>
+			<label>Pedidos</label>
+			<source>/general/pedidos.xml</source>
+		</item>
+		<item>
+			<label>Respuestas</label>
+			<source>/general/respuestas.xml</source>
+		</item>
+		
+	</section>
+	<section label="Módulos">
+		<item>
+			<label>Críticas</label>
+			<source>/modulos/review.xml</source>
+		</item>
+		<item>
+			<label>Clips</label>
+			<source>/modulos/clip.xml</source>
+		</item>
+		<item>
+			<label>Personas</label>
+			<source>/modulos/person.xml</source>
+		</item>
+		<item>
+			<label>Lugares</label>
+			<source>/modulos/venues.xml</source>
+		</item>
+		<item>
+			<label>Imágenes</label>
+			<source>/modulos/image.xml</source>
+		</item>
+	</section>
+</nav>

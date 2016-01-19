@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+  <page>
+    <title>API Alternativa</title>
+
+    <subtitle>Introducción</subtitle>
+    <text>
+      En esta documentación encontrará los recursos disponibles para utilizar en una implementación externa del sistema Alternativa Teatral.
+    </text>
+
+    <divider />
+
+    <subtitle>URL del servicio</subtitle>
+    <box>
+      <a href="http://shakespeare.alternativateatral.com/api/" target="_blank">http://shakespeare.alternativateatral.com/api/</a>
+    </box>
+    <subtitle>APIKey</subtitle>
+    <box>
+      3221406e7168796e6a75607260245b657a6b797363692d4a70622162617844
+    </box>
+
+    <divider />
+
+    
+
+
+  </page>
+</xml>
