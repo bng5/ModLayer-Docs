@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+  <page>
+    <title>Módulo Venue</title>
+    <text>
+      Este módulo tiene como objetivo administrar lugares (o espacios) dentro del sistema que luego se podrán relacionar con otros contenidos.
+    </text>
+
+    <subtitle>Recursos disponibles</subtitle>
+    <list>
+      <item><a href="#getcontent">GetContent</a></item>
+      <item><a href="#setcontent">SetContent</a></item>
+      <item><a href="#getitem">GetItem</a></item>
+    </list>
+
+    <method>GetContent</method>
+    <text>
+      Tipo <arrow_right /> Solo lectura
+      <br/>
+      <a href="/general/respuestas.xml#acceso-por-url-solo-lectura">Acceso por URL</a> <arrow_right /> Si
+    </text>
+    <text>
+       Este método permite obtener un listado, con paginado. Espera como parámetros los filtros del paginado. Como <mono>pageSize</mono> (cantidad de items por página), <mono>currentPage</mono> (número de página), <mono>startdate</mono> y <mono>enddate</mono> (para filtrar por rango de fechas).
+    </text>
+    <text>
+      Ejemplo:
+    </text>
+<code>
+{
+    "call" : "Venue.GetContent",
+    "pageSize"    : 5,
+    "currentPage" : 1,
+    "startdate"   : "2016-01-01",
+    "enddate"     : "2016-25-01"
+}
+</code>
+
+    <subtitle>Parámetros</subtitle>
+    <parameters>
+      <param>
+        <name>call</name>
+        <type>String</type>
+        <required>Si</required>
+        <desc>Nombre del recurso</desc>
+      </param>
+      <param>
+        <name>currentPage</name>
+        <type>Integer</type>
+        <required>No</required>
+        <desc>Número de página a mostrar. Valor por defecto: 1</desc>
+      </param>
+      <param>
+        <name>pageSize</name>
+        <type>Integer</type>
+        <required>No</required>
+        <desc>Cantidad de ítems por página. Valor por defecto: 10</desc>
+      </param>
+      <param>
+        <name>startdate</name>
+        <type>String</type>
+        <required>No</required>
+        <desc>Fecha de inicio para rango de fechas en el formato “Y-m-d” (se puede agregar h:m:s)</desc>
+      </param>
+      <param>
+        <name>enddate</name>
+        <type>String</type>
+        <required>No</required>
+        <desc>Fecha de fin para rango de fechas en el formato “Y-m-d” (se puede agregar h:m:s)</desc>
+      </param>
+    </parameters>
+
+    <divider/>
+
+
+    <method>SetContent</method>
+    <text>
+      Tipo <arrow_right /> Escritura
+      <br/>
+      <a href="/general/respuestas.xml#acceso-por-url-solo-lectura">Acceso por URL</a> <arrow_right /> No
+    </text>
+    <text>
+      Este método permite dar de alta un lugar (o espacio).
+    </text>
+    <text>
+      Ejemplo:
+    </text>
+<code>
+{
+    "call" : "Venue.SetContent",
+    "name" : "Nuevo Espacio Cultural Float",
+    "data" : {
+        "email" : "test@float.la",
+        "phone" : "12345678",
+        "url"   : "http://floatcultural.com",
+        "address"     : "Av. Sarmiento 1023",
+        "facebook"    : "http://www.facebook.com/floatcultural",
+        "twitter"     : "@floatcultural",
+        "information" : "<p>Information about Espacio Cultural Float</p>"
+    },
+    "ext_id"   : 111,
+    "ext_type" : "type_espaciotest"
+}
+</code>
+    
+    <subtitle>Parámetros</subtitle>
+    <parameters>
+      <param>
+        <name>call</name>
+        <type>String</type>
+        <required>Si</required>
+        <desc>Nombre del recurso</desc>
+      </param>
+      <param>
+        <name>name</name>
+        <type>String</type>
+        <required>Si</required>
+        <desc>Nombre del espacio</desc>
+      </param>
+      <param>
+        <name>data</name>
+        <type>Object</type>
+        <required>Si</required>
+        <desc>Objeto json que contiene toda la información acerca del espacio a excepción del nombre.</desc>
+      </param>
+      <param>
+        <name>ext_id</name>
+        <type>Integer</type>
+        <required>Si</required>
+        <desc>ID externo</desc>
+      </param>
+      <param>
+        <name>ext_type</name>
+        <type>String</type>
+        <required>Si</required>
+        <desc>Tipo externo</desc>
+      </param>
+    </parameters>
+
+    <divider />
+
+    <method>GetItem</method>
+    <text>
+      Tipo <arrow_right /> Solo lectura
+      <br/>
+      <a href="/general/respuestas.xml#acceso-por-url-solo-lectura">Acceso por URL</a> <arrow_right /> Si
+    </text>
+    <text>
+       Este método permite obtener los datos de un lugar (o espacio) a través de su ID.
+    </text>
+    <text>
+      Ejemplo:
+    </text>
+<code>
+{
+    "call" : "Venue.GetItem",
+    "id" : 22
+}
+</code>
+    <subtitle>Parámetros</subtitle>
+    <parameters>
+      <param>
+        <name>call</name>
+        <type>String</type>
+        <required>Si</required>
+        <desc>Nombre del recurso</desc>
+      </param>
+      <param>
+        <name>id</name>
+        <type>Integer</type>
+        <required>Si</required>
+        <desc>ID del lugar</desc>
+      </param>
+    </parameters>
+
+
+    <divider />
+  </page>
+</xml>

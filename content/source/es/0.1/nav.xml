@@ -33,7 +33,7 @@
 		</item>
 		<item>
 			<label>Lugares</label>
-			<source>/modulos/venues.xml</source>
+			<source>/modulos/venue.xml</source>
 		</item>
 		<item>
 			<label>Imágenes</label>
