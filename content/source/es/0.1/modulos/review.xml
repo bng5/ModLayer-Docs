@@ -25,13 +25,13 @@
     </text>
 <code>
 {
-  "call" : "Review.GetContent",
-  "currentPage" : 1,
-  "pageSize" : 5,
-  “startdate” : “2015-01-01”,
-  “enddate” : “2015-07-01”,
-  "id" : 5225,
-  “type” : “Espectáculo”
+    "call" : "Review.GetContent",
+    "currentPage" : 1,
+    "pageSize" : 5,
+    "startdate" : "2015-01-01",
+    "enddate" : "2015-07-01",
+    "id" : 5225,
+    "type" : "Espectáculo"
 }
 </code>
     <subtitle>Parámetros</subtitle>
@@ -75,8 +75,8 @@
       <param>
         <name>type</name>
         <type>string</type>
-        <required>solo si está presente el parámetro “id”</required>
-        <desc>Nombre del tipo de contenido del “id” externo que se desea pedir </desc>
+        <required>solo si está presente el parámetro "id"</required>
+        <desc>Nombre del tipo de contenido del "id" externo que se desea pedir </desc>
       </param>
     </parameters>
 
@@ -94,17 +94,17 @@
     </text>
 <code>
 {
-  "call" : "Review.SetContent",
-  "url" : "http://www.lanacion.com.ar/1367418",
-  "relation" : [
-      {
-      "id": 15582, 
-      "type" : "Espectáculo", 
-      "title" : "Espejos Circulares"
-      }
-  ],
-  "categories" : ["Crítica"],
-  “date” : “2015-08-21 13:00:00”
+    "call" : "Review.SetContent",
+    "url" : "http://www.lanacion.com.ar/1367418",
+    "relation" : [
+        {
+            "id": 15582, 
+            "type" : "Espectáculo", 
+            "title" : "Espejos Circulares"
+        }
+    ],
+    "categories" : ["Crítica"],
+    "date" : "2015-08-21 13:00:00"
 }
 </code>
     
@@ -181,12 +181,12 @@
     <text>
       Ejemplo:
     </text>
-    <code><!-- 
--->{
+<code>
+{
     "call" : "Review.UnsetContent",
     "url" : "http://www.lanacion.com.ar/1367418",
-}<!-- 
-    --></code>
+}
+</code>
 
     <subtitle>Parámetros</subtitle>
     <parameters>
@@ -214,18 +214,18 @@
     <text>
       Ejemplo:
     </text>
-    <code><!-- 
--->{
+<code>
+{
     "call" : "Review.UnsetContent",
     "url" : "http://www.lanacion.com.ar/1367418",
     "relation" : [
         {
-        "id": 15582, 
-        "type" : "Espectáculo"
+            "id": 15582, 
+            "type" : "Espectáculo"
         }
     ]
-}<!-- 
-    --></code>
+}
+</code>
 
     <subtitle>Parámetros</subtitle>
     <parameters>
