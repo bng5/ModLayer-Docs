@@ -26,20 +26,20 @@
       Se deberá concatenar el nombre del método y como extensión el formato de respuesta deseado. Ejemplo: 
     </text>
     <box>
-      http://shakespeare.alternativateatral.com/api/Review.GetContent.xml
+      <a href="http://shakespeare.alternativateatral.com/api/Review.GetContent.xml" target="_blank">http://shakespeare.alternativateatral.com/api/Review.GetContent.xml</a>
     </box>
     <text>
       mostrará un listado en <mono>XML</mono>, mientras que 
     </text>
     <box>
-      http://shakespeare.alternativateatral.com/api/Review.GetContent.json
+      <a href="http://shakespeare.alternativateatral.com/api/Review.GetContent.json" target="_blank">http://shakespeare.alternativateatral.com/api/Review.GetContent.json</a>
     </box>
     <text>
       mostrará el mismo resultado en <mono>JSON</mono>. 
       Los parámetros de cada método se recibirán por <mono>GET</mono> y son los mismos que se describen para cada recurso un objecto <mono>Json</mono>. Ejemplo:
     </text>
     <box>
-      http://shakespeare.alternativateatral.com/api/Review.GetContent.xml?id=929&amp;type=Espectáculo
+      <a href="http://shakespeare.alternativateatral.com/api/Review.GetContent.xml?id=929&amp;type=Espectáculo" target="_blank">http://shakespeare.alternativateatral.com/api/Review.GetContent.xml?id=929&amp;type=Espectáculo</a>
     </box>
     
     <divider />
