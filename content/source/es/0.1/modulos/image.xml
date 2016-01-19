@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+  <page>
+    <title>Módulo Image</title>
+    <text>
+      El módulo image administra todas las imágenes del sistema. Que luego se relacionan con otros contenidos del sistema.
+    </text>
+
+    <subtitle>Recursos disponibles</subtitle>
+    <list>
+      <item><a href="#setcontent">SetContent</a></item>
+      <item><a href="#upload">Upload</a></item>
+    </list>
+
+
+    <method>SetContent</method>
+    <text>
+      Tipo <arrow_right /> Escritura
+      <br/>
+      <a href="/general/respuestas.xml#acceso-por-url-solo-lectura">Acceso por URL</a> <arrow_right /> No
+    </text>
+    <text>
+        Este método es una de las opciones para dar de alta una imagen que ya existe en el server de origen, espera una imagen como string encodeada con base64. Asi la transmisión de los datos es mas fluida y se evitan errores. 
+    </text>
+    <text>
+        También se espera el parámetro <mono>filesize</mono> que indica el peso en bytes de la imagen. Con ese valor, se puede hacer una comparación al recibir los datos y validar si la imagen fue recibida correctamente. En caso contrario no se inserta un registro en la base y se dispara una excepción.
+    </text>
+    <text>
+        En el siguiente ejemplo, se utiliza PHP para tomar el filesize de un archivo antes de enviar y base64_encode para mandar la imagen como un string.
+    </text>
+    <text>
+      Ejemplo:
+    </text>
+<code>
+// PHP  
+$filename = dirname(__FILE__) . '/81.jpg';
+$handle = fopen($filename, "r");
+$image  = fread($handle, filesize($filename));
+</code>
+<code>
+$json = '{
+    "call" : "Image.SetContent",
+    "title" : "Imagen de prueba API",
+    "filesize" : "' . filesize($filename) . '",
+    "file" : “ . "' . base64_encode($image) . '“,
+    “response” : “json”,
+    “ext_id” : 111,
+    “ext_type” : “image
+}';
+</code>
+    <text>Ejemplo asignando personas con roles a una imagen:</text>
+<code>
+$json = '{
+    "call"     : "Image.SetContent",
+    "title"    : "Prueba de subida desde la API",
+    "filesize" : "' . filesize($filename) . '",
+    "file"     : "' . base64_encode($image) . '",
+    "response" : "json",
+    "roles" : {
+        "actor" : [
+            {
+                “name” : "Horacio Soto",
+                ”ext_id” : 11,
+                ”ext_type” : ”persona”
+            },
+            {
+                “name” : "Claudio Romano",
+                ”ext_id” : 12,
+                ”ext_type” : ”persona”
+            }
+        ],
+        "director" : [
+            {
+                “name” : "Josie Feldman",
+                ”ext_id” : 14, 
+                ”ext_type” : ”persona”
+            }
+        ],
+        "designer" : [
+            {
+                “name” : "Claudio Romano",
+                ”ext_id” : 12,
+                ”ext_type” : ”persona”
+            }
+        ]
+    },
+    “ext_id” : 111,
+    “ext_type” : “foto”
+}';
+</code>
+    <subtitle>Parámetros</subtitle>
+    <parameters>
+      <param>
+        <name>call</name>
+        <type>string</type>
+        <required>Si</required>
+        <desc>Nombre del recurso</desc>
+      </param>
+      <param>
+        <name>title</name>
+        <type>string</type>
+        <required>Si</required>
+        <desc>Título para la imagen a agregar</desc>
+      </param>
+      <param>
+        <name>filesize</name>
+        <type>Integer</type>
+        <required>Si</required>
+        <desc>Peso de la imagen en bytes.</desc>
+      </param>
+      <param>
+        <name>file</name>
+        <type>string</type>
+        <required>Si</required>
+        <desc>string con la imagen codificada en base64</desc>
+      </param>
+      <param>
+        <name>roles</name>
+        <type>Object</type>
+        <required>No</required>
+        <desc>Objeto json donde la clave es el nombre del rol y el valor es un array con el listado de las personas. (es condición que contenga al menos 1 objeto).</desc>
+      </param>
+      <param>
+        <name>roles.name</name>
+        <type>string</type>
+        <required>Si*</required>
+        <desc>Nombre de la persona. * es requerido solo si está presente el parámetro roles.</desc>
+      </param>
+      <param>
+        <name>roles.ext_id</name>
+        <type>Integer</type>
+        <required>Si*</required>
+        <desc>Id externo de la persona. * es requerido solo si está presente el parámetro roles.</desc>
+      </param>
+      <param>
+        <name>roles.ext_type</name>
+        <type>String</type>
+        <required>Si*</required>
+        <desc>Tipo externo de la persona. * es requerido solo si está presente el parámetro roles.</desc>
+      </param>
+      <param>
+        <name>ext_id</name>
+        <type>integer</type>
+        <required>Si</required>
+        <desc>ID externo</desc>
+      </param>
+      <param>
+        <name>ext_type</name>
+        <type>String</type>
+        <required>Si</required>
+        <desc>Tipo de contenido externo.</desc>
+      </param>
+    </parameters>
+
+    <divider />
+
+
+    <method>Upload</method>
+    <text>
+      Tipo <arrow_right /> Escritura
+      <br/>
+      <a href="/general/respuestas.xml#acceso-por-url-solo-lectura">Acceso por URL</a> <arrow_right /> No
+    </text>
+    <text>
+        Este método permite enviar una imagen desde un formulario html directamente desde el cliente, evitando tener que guardar la imagen en un server de origen y luego transmitirla a través del método SetContent. Espera los parametros titulo (titulo de la imagen), Filedata (la imagen por post) y Roles (relaciones de personas con roles).
+    </text>
+    <text>
+        <i>
+            Por el momento para evitar problemas de cross-domain, está abierto. Luego deberíamos segurizarlo para evitar que alguien le pegue y suba imágenes.<br/>
+            Para evitar la validación del apikey que se hace automáticamente para los llamados por POST. Este método puede ser invocado por URL.
+        </i>
+        <br/>
+        Ejemplo:
+    </text>
+    <box>
+        http://shakespeare.alternativateatral.com/api/Image.Upload.json
+    </box>
+    <box>
+        http://shakespeare.alternativateatral.com/api/Image.Upload.xml
+    </box>
+
+    <subtitle>Parámetros</subtitle>
+    <parameters>
+      <param>
+        <name>title</name>
+        <type>String</type>
+        <required>Si</required>
+        <desc>Título de la imagen</desc>
+      </param>
+      <param>
+        <name>Filedata</name>
+        <type>file</type>
+        <required>Si</required>
+        <desc>Archivo enviado por html POST</desc>
+      </param>
+      <param>
+        <name>roles</name>
+        <type>Object</type>
+        <required>No</required>
+        <desc>Objeto json donde la clave es el nombre del rol y el valor es un array con el listado de las personas. (es condición que contenga al menos 1 objeto).</desc>
+      </param>
+      <param>
+        <name>roles.name</name>
+        <type>string</type>
+        <required>Si*</required>
+        <desc>Nombre de la persona. * es requerido solo si está presente el parámetro roles.</desc>
+      </param>
+      <param>
+        <name>roles.ext_id</name>
+        <type>Integer</type>
+        <required>Si*</required>
+        <desc>Id externo de la persona. * es requerido solo si está presente el parámetro roles.</desc>
+      </param>
+      <param>
+        <name>roles.ext_type</name>
+        <type>String</type>
+        <required>Si*</required>
+        <desc>Tipo externo de la persona. * es requerido solo si está presente el parámetro roles.</desc>
+      </param>
+      <param>
+        <name>ext_id</name>
+        <type>integer</type>
+        <required>Si</required>
+        <desc>ID externo</desc>
+      </param>
+      <param>
+        <name>ext_type</name>
+        <type>String</type>
+        <required>Si</required>
+        <desc>Tipo de contenido externo.</desc>
+      </param>
+    </parameters>
+    
+
+    <text>
+      Ejemplo HTML:
+    </text>
+<code>
+&lt;!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Prueba Imagen</title>
+        <style type="text/css">
+            label {display:block;padding:0 0 10px 0;}
+            ul {list-style:none;padding:0 0 0 30px;margin:0;}
+            ul li {padding:10px 0;}
+        </style>
+    </head>
+    <body>
+        <h2>Upload de imagenes: api</h2>
+        <form id="simple" method="post" enctype="multipart/form-data" action="http://shakespeare.alternativateatral.com/api/Image.Upload.xml">
+            <comment>
+                Opcional para roles:
+                El nombre del campo deberá tener el nombre del rol entre corchetes y luego abrir y cerrar corchetes vacio. De esta manera se recibe como un listado. 
+            </comment>
+            <input type="hidden" name="roles[Actor][]" value="Horacio Soto,11,personaje" />
+            <input type="hidden" name="roles[Actor][]" value="Claudio Romano,12,personaje" />
+            <input type="hidden" name="roles[Director][]" value="Josie Feldman,14,personaje" />
+            <input type="hidden" name="roles[Designer][]" value="Claudio Romano,12,personaje" />
+            <input type="hidden" name="ext_id" value="11" />
+            <input type="hidden" name="ext_type" value="foto" />
+            <comment>
+                Fin Opcional para roles
+            </comment>
+            <ul>
+                <li>
+                    <label>Titulo</label>
+                    <input type="text" name="title" value="" placeholder="titulo de la imagen" />
+                </li>
+                <li>
+                    <label>Archivo</label>
+                    <input type="file" name="Filedata" value=""  />
+                </li>
+                <li>
+                    <button type="submit">Enviar</button>
+                </li>
+            </ul>
+        </form>
+    </body>
+</html>
+</code>
+
+    <divider />
+
+    <method>UnsetRoles</method>
+    <text>
+      Tipo <arrow_right /> Escritura
+      <br/>
+      <a href="/general/respuestas.xml#acceso-por-url-solo-lectura">Acceso por URL</a> <arrow_right /> No
+    </text>
+    <text>
+        El método para eliminar Roles, elimina solamente la relación que existe (como rol) entre una persona y una imagen. No se elimina ni la imagen ni la persona.<br/>
+        El array de roles esperado no tiene el mismo formato que para agregar un rol. Solo se necesita el nombre de la persona para eliminar el rol.
+    </text>
+    <text>Ejemplo:</text>
+<code>
+$json = ‘{
+    "call" : "Image.UnsetRoles",
+    "image_id" : 1197,
+    "roles" :
+        {
+            "actor" : [ "Horacio Soto", "Claudio Romano" ],
+            "director" : [ "Josie Feldman" ],
+            "designer" : [ "Claudio Romano" ]
+        },
+    "response" : "json"
+}’;
+</code>
+
+    <subtitle>Parámetros</subtitle>
+    <parameters>
+      <param>
+        <name>call</name>
+        <type>String</type>
+        <required>Si</required>
+        <desc>Nombre del recurso</desc>
+      </param>
+      <param>
+        <name>image_id</name>
+        <type>Integer</type>
+        <required>Si</required>
+        <desc>id de la imagen de la que se quiere eliminar el rol</desc>
+      </param>
+      <param>
+        <name>roles</name>
+        <type>Object</type>
+        <required>Si</required>
+        <desc>Objeto json donde la clave es el nombre del rol y el valor es un array con el listado de las personas</desc>
+      </param>
+    </parameters>
+
+    <divider />
+  </page>
+</xml>

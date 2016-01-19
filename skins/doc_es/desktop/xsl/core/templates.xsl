@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:g="http://www.google.com/+1/button/" xmlns:fb="http://developers.facebook.com/">
 <xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="yes" />
-<xsl:strip-space elements="*" />
+
 
 <!-- Menu -->
 <xsl:template name="navigation">
@@ -92,15 +92,35 @@
 </xsl:template>
 
 <xsl:template match="code">
-	<code>
-		<pre class="prettyprint">
-			<xsl:if test="@linenums">
-				<xsl:attribute name="class">prettyprint linenums:<xsl:value-of select="@linenums" /></xsl:attribute>
-			</xsl:if>
-			<xsl:apply-templates />
-		</pre>
-	</code>
+	<pre class="prettyprint">
+		<xsl:if test="@linenums">
+			<xsl:attribute name="class">prettyprint linenums:<xsl:value-of select="@linenums" /></xsl:attribute>
+		</xsl:if>
+		<xsl:apply-templates mode="code" />
+	</pre>
 </xsl:template>
+
+<xsl:template match="*" mode="code"><!-- 
+ -->&lt;<xsl:value-of select="name()" /><!-- 
+	 --><xsl:apply-templates select="@*" mode="code" /><!-- 
+ --><xsl:if test="not(./text())">/</xsl:if><!-- 
+ -->><!-- 
+ --><xsl:apply-templates mode="code" /><!-- 
+ --><xsl:if test="./text()"><!-- 
+	-->&lt;/<xsl:value-of select="name()" />><!-- 
+ --></xsl:if><!--  -->
+</xsl:template>
+
+<xsl:template match="comment" mode="code"><!-- 
+	 -->&lt;!-- <xsl:value-of select="." /> --><!--  -->
+</xsl:template>
+
+<xsl:template match="@*" mode="code"><!-- 
+	 -->&#xa0;<xsl:value-of select="name()" />="<xsl:value-of select="." />"<!-- 
+ --></xsl:template>
+<xsl:template match="text()" mode="code"><!-- 
+	 --><xsl:value-of select="translate(., ' ', '&#xa0;')" /><!-- 
+ --></xsl:template>
 
 <xsl:template match="divider">
 	<p class="divider">&#xa0;</p>
