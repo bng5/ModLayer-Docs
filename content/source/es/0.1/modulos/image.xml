@@ -10,6 +10,7 @@
     <list>
       <item><a href="#setcontent">SetContent</a></item>
       <item><a href="#upload">Upload</a></item>
+      <item><a href="#unsetroles">UnsetRoles</a></item>
     </list>
 
 
@@ -250,19 +251,19 @@ $json = '{
     <body>
         <h2>Upload de imagenes: api</h2>
         <form id="simple" method="post" enctype="multipart/form-data" action="http://shakespeare.alternativateatral.com/api/Image.Upload.xml">
-            <comment>
+            <!-- 
                 Opcional para roles:
                 El nombre del campo deberá tener el nombre del rol entre corchetes y luego abrir y cerrar corchetes vacio. De esta manera se recibe como un listado. 
-            </comment>
+             -->
             <input type="hidden" name="roles[Actor][]" value="Horacio Soto,11,personaje" />
             <input type="hidden" name="roles[Actor][]" value="Claudio Romano,12,personaje" />
             <input type="hidden" name="roles[Director][]" value="Josie Feldman,14,personaje" />
             <input type="hidden" name="roles[Designer][]" value="Claudio Romano,12,personaje" />
             <input type="hidden" name="ext_id" value="11" />
             <input type="hidden" name="ext_type" value="foto" />
-            <comment>
+            <!-- 
                 Fin Opcional para roles
-            </comment>
+            -->
             <ul>
                 <li>
                     <label>Titulo</label>

@@ -111,16 +111,14 @@
  --></xsl:if><!--  -->
 </xsl:template>
 
-<xsl:template match="comment" mode="code"><!-- 
+<xsl:template match="comment()" mode="code"><!-- 
 	 -->&lt;!-- <xsl:value-of select="." /> --><!--  -->
 </xsl:template>
 
 <xsl:template match="@*" mode="code"><!-- 
 	 -->&#xa0;<xsl:value-of select="name()" />="<xsl:value-of select="." />"<!-- 
  --></xsl:template>
-<xsl:template match="text()" mode="code"><!-- 
-	 --><xsl:value-of select="translate(., ' ', '&#xa0;')" /><!-- 
- --></xsl:template>
+
 
 <xsl:template match="divider">
 	<p class="divider">&#xa0;</p>
