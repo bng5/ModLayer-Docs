@@ -12,17 +12,17 @@
     <text>
       Para poder acceder al servicio es necesario enviar en el <mono>HEADER</mono> del pedido un parametro con el nombre <mono>APIKEY</mono> y el valor de la Apikey otorgada.
     </text>
-    <code linenums="1"><!-- 
-       -->Host: shakespeare.alternativateatral.com
-<!--   -->Accept: */* 
-<!--   --><b>apikey: 3b215471706c796964217d6153505d </b>
-<!--   -->Content-Length: 50 
-<!--   -->Content-Type: application/x-www-form-urlencoded<!-- 
-     --></code>
+<code linenums="1">
+Host: shakespeare.alternativateatral.com
+Accept: */* 
+apikey: 3b215471706c796964217d6153505d
+Content-Length: 50 
+Content-Type: application/x-www-form-urlencoded
+</code>
     <divider />
     <subtitle>Parámetros</subtitle>
     <text>
-      El servicio espera un objeto <mono>Json</mono> (<a href="/general/respuestas.xml#error-501">bien formado</a>) en el cual  se deberá incluir al menos el atributo <mono>call</mono> que hace referencia al recurso - módulo y método - que se quiere invocar.
+      El servicio espera un objeto <mono>JSON</mono> (<a href="/general/respuestas.xml#error-501">bien formado</a>) que deberá ser enviado por <mono>POST</mono> en el cual  se deberá incluir <b>siempre</b> el atributo <mono>call</mono> que hace referencia al recurso - módulo y método - que se quiere invocar y el resto de los parámetros dependerá de ese recurso.
     </text>
     <code>
   {
