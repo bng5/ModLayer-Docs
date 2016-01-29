@@ -64,8 +64,8 @@ li.L5, li.L6, li.L7, li.L8
 	color:#fff;
 	background:#393939;
 }
-#top .logo {float:right;margin:0 0 0 20px;}
-#top .logo img {width:150px;}
+#top .logo {float:right;margin:4px 0 0 20px;}
+#top .logo img {width:100px;}
 #top h3 {
 	margin:0;
 	font-size:21px;
@@ -127,10 +127,24 @@ li.L5, li.L6, li.L7, li.L8
 .navpane {
 	float:left;
 	width:20%;
+	transition:all 0.2s ease;
 }
 
+
+a.menu {
+	display:none;
+	height:100%;
+	width:55px;
+	background:#f0f0f0 url('../imgs/menu.png') center 10px no-repeat;
+	position:absolute;
+	top:0;
+	right:-55px;
+	border-left:1px solid #e0e0e0;
+	
+}
 nav {
 	padding:30px 0 0 50px;
+	z-index:999;
 }
 nav .block {margin:0 0 20px 0;}
 nav .block h2 {color:#656565;font-size:21px;margin-bottom:5px;}
@@ -165,6 +179,7 @@ p.box {
 	padding:10px;
 	border:1px solid #eee;
 	color:#3C6A99;
+	word-break: break-all;
 }
 .arrow-right,
 .arrow-left  {
@@ -186,6 +201,7 @@ pre.prettyprint {
 	line-height: 20px;
 	border:1px solid #e0e0e0;
 	padding:10px;
+	word-break: break-all;
 }
 
 
@@ -235,6 +251,7 @@ table th, table td {
 	vertical-align:top;
 	font-size:16px;
 	line-height:20px;
+	/*word-break: break-all;*/
 }
 
 table th {
@@ -259,12 +276,16 @@ ul.form li textarea {height:150px;}
 /*tabla de parametros*/
 table.parameters {}
 table.parameters th {background:#eee;color:#335577;}
-table td.type, table td.required {text-align:center;}
+
 table.parameters td span {
+	display:block;
+	color:#444;
+}
+table.parameters span.name {
 	font-family: 'inconsolata', 'Courier New', Courier, monospace;
 	color:#3C6A99;
-	display:inline-block;
 }
+table.parameters td b {font-weight:normal;color:#aaa;}
 
 table.parameters .name span {color:#333;font-size:17px;}
 
@@ -288,4 +309,48 @@ table.parameters .name span {color:#333;font-size:17px;}
 }
 
 .btn:visited {color:#fff;}
+
+
+@media (max-width: 760px) {
+
+	#page, #top, footer {
+		margin-left:55px;
+	}
+	.navpane {
+		float:none;
+		width:80%;
+		position:fixed;
+		top:0;
+		left:-80%;
+		background:#fff;
+		height:100%;
+	}
+
+	.navpane.open {
+		left:0;
+	}
+	
+	a.menu {display:block;}
+
+	nav {
+		padding:0;
+		height:100%;
+		overflow:auto;
+	}
+	nav .block {margin:0;}
+	nav .block h2 {padding:20px 15px 10px;border-bottom:1px solid #f0f0f0;margin:0;}
+	nav ul {list-style:none;background:none;}
+	nav ul li {}
+	nav ul li a {display:block;padding:8px 25px;border-bottom:1px solid #f0f0f0;}
+	nav ul li a.active {color:#000;background:#f0f0f0;}
+
+	.pageview {
+		float:none;
+		width:100%;
+		border-left:0;
+	}
+	#top .logo {display:none;}
+}
+
+
 

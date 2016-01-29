@@ -7,7 +7,7 @@
 <xsl:template name="header">
 
 	<header id="top">
-		
+
 			<a href="/" class="logo">
 				<img src="{$skinpath}/imgs/logo.svg" alt="{$config/system/applicationID}" />
 			</a>
@@ -26,7 +26,6 @@
 						</xsl:for-each>
 					</ul>	
 				</xsl:if>
-				
 			</div>
 
 			<h3><xsl:value-of select="$config/system/applicationID" /></h3>

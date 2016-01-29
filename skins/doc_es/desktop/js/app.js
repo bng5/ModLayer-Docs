@@ -7,4 +7,10 @@ $(document).ready(function(){
 		$('.version ul').toggle();
 	});
 
+	$('a.menu').click(function(e){
+		e.preventDefault();
+
+		$('.navpane').toggleClass('open');
+	});
+
 });

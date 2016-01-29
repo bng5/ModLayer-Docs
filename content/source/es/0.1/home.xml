@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xml>
   <page>
-    <title>API Alternativa</title>
+    <title>Modlayer Doc</title>
 
     <subtitle>Introducción</subtitle>
     <text>
-      En esta documentación encontrará los recursos disponibles para utilizar en una implementación externa del sistema Alternativa Teatral.
+      Documentacion de Modlayer
     </text>
 
     <divider />

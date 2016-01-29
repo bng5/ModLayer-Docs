@@ -27,6 +27,8 @@
 <!-- ************** html head ************** -->
 <xsl:template name="htmlHead">
 	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<title><xsl:value-of select="$config/system/applicationID" /></title>
 	<xsl:choose>
 		<xsl:when test="$dinamicHead != ''">

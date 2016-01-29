@@ -5,7 +5,8 @@
 
 <!-- Menu -->
 <xsl:template name="navigation">
-	<nav>
+	<nav id="menu">
+		<a href="#menu" class="menu">&#xa0;</a>
 		<xsl:apply-templates select="$context/nav" mode="nav" />
 	</nav>
 </xsl:template>
@@ -182,11 +183,10 @@
 <xsl:template match="parameters">
 	<table class="parameters" cellpadding="0" cellspacing="0" border="0">
 		<tr>
-			<th width="30%">Nombre</th>
-			<th width="10%">Tipo</th>
-			<th width="10%">Requerido</th>
-			<th width="50%">Descripción</th>
-			
+			<th width="40%">Nombre</th>
+			<!-- <th width="10%">Tipo</th>
+			<th width="10%">Requerido</th> -->
+			<th width="60%">Descripción</th>
 		</tr>
 		<xsl:apply-templates mode="parameter" />	
 	</table>
@@ -194,15 +194,17 @@
 
 <xsl:template match="param" mode="parameter">
 	<tr>
-		<td class="name">
-			<span><xsl:apply-templates select="name" /></span>
+		<td>
+			<span class="name"><xsl:apply-templates select="name" /></span>
+			<span class="type"><b>Tipo: </b> <xsl:apply-templates select="type" /></span>
+			<span class="required"><b>Requerido: </b> <xsl:apply-templates select="required" /></span>
 		</td>
-		<td class="type">
+		<!-- <td class="type">
 			<span><xsl:apply-templates select="type" /></span>
 		</td>
 		<td class="required">
 			<span class="required"><xsl:apply-templates select="required" /></span>
-		</td>
+		</td> -->
 		<td class="desc">
 			<xsl:apply-templates select="desc" />
 		</td>
