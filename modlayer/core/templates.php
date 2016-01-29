@@ -143,6 +143,13 @@ class Templates {
 		return $this->xmlDoc->XMLTransform($this->xmlDoc->saveXML(),$this->xsl->saveXML(),$this->params);
 	}
 
+	public function returnXML()
+	{
+		$this->xmlDoc->generateXML($this->configuration, $this->values, $this->context);
+		$this->importStylesheets();
+		return $this->xmlDoc->saveXML();
+	}
+
 
 	/**
 	* @Add Method

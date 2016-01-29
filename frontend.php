@@ -3,7 +3,7 @@ Class FrontEnd {
 	
 	public static function DisplayDefault()
 	{	
-		$interface = Skin::Load();
+		$skin = Skin::Load();
 
 		$version   = Application::Version();
 		$tree      = Application::Tree($version);
@@ -11,30 +11,27 @@ Class FrontEnd {
 		$home      = $version . '/home.xml';
 		$nav       = $version . '/nav.xml';
 		
-		$interface->setcontent($home, '/xml/*', null);
-		$interface->setcontext($tree, null, 'tree');
-		$interface->setcontext(Application::GetVersions(), null, 'versions');
-		$interface->setcontext($nav, '/nav', null);
+		$skin->setcontent($home, '/xml/*', null);
+		$skin->setcontext($tree, null, 'tree');
+		$skin->setcontext(Application::GetVersions(), null, 'versions');
+		$skin->setcontext($nav, '/nav', null);
 
-		$interface->add('page.xsl');
-		$interface->display();
+		$skin->add('page.xsl');
+		$skin->display();
 	}
 
 	public static function DisplayResource()
 	{
-		$url = Util::getvalue('url');
-		$url = $url . '.xml';
+		$url    = Util::getvalue('url');
 
+		$url = $url . '.xml';
 		self::DisplayPage($url);
 	}
 
 	public static function DisplayPage($xml)
 	{
-		$interface = Skin::Load();
-
+		$skin = Skin::Load();
 		$version   = Application::Version();
-		// $tree      = Application::Tree($version);
-		
 		$nav       = $version . '/nav.xml';
 		
 		// Archivo con el contenido
@@ -43,13 +40,65 @@ Class FrontEnd {
 		if(!file_exists($xmlCont))
 			Util::redirect('/not-found/404/?url=' . $xml);
 		
-		$interface->setcontent($xmlCont, '/xml/*', null);
-		// $interface->setcontext($tree, null, 'tree');
-		$interface->setcontext(Application::GetVersions(), null, 'versions');
-		$interface->setcontext($nav, '/nav', null);
+		$skin->setcontent(
+			$xmlCont, 
+			'/xml/*', 
+			null
+		);
+		$skin->setcontext(
+			Application::GetVersions(), 
+			null, 
+			'versions'
+		);
+		$skin->setcontext(
+			$nav, 
+			'/nav', 
+			null
+		);
+		$skin->add('page.xsl');
 
-		$interface->add('page.xsl');
-		$interface->display();
+		self::output($skin);
+		// $skin->display();
+	}
+
+	public static function Output(Templates $skin)
+	{
+		$format = Util::getvalue('format');
+
+		switch($format){
+			case "xml":
+				$output = Skin::Load( 'output-xml.xsl');
+				$output->setcontent($skin->returnXML(), '/xml/*', null);
+
+				header("Content-Type: text/xml; charset=UTF-8");
+				$output->display();				
+				break;
+			case "json":
+				$response = Skin::Load( 'output-xml.xsl');
+				$response->setcontent($skin->returnXML(), '/xml/*', null);
+
+				$output   = Skin::Load( 'output-json.xsl');
+				$output->setcontent($response->returnDisplay(), '/xml/*', null);
+
+				header("Content-Type: application/json; charset=UTF-8");
+				$output->display();
+				break;
+			default:
+				$skin->display();
+				break;
+		}
+
+		die;
+		if($format == 'json')
+		{
+			
+		}
+		else
+		{
+			header("Content-Type: text/xml; charset=UTF-8");
+			$skin->display();
+			die;
+		}
 	}
 
 
@@ -58,15 +107,15 @@ Class FrontEnd {
 	*/
 	public static function FrontDisplayNotFound()
 	{
-		$interface = Skin::Load();
+		$skin = Skin::Load();
 		$version   = Application::Version();
 		$nav       = $version . '/nav.xml';
 		
-		$interface->setcontext($nav, '/nav', null);
-		$interface->setparam("error", '404');
-		$interface->add("core/error.xsl");
+		$skin->setcontext($nav, '/nav', null);
+		$skin->setparam("error", '404');
+		$skin->add("core/error.xsl");
 		header("Status: 404 Not Found");
-		$interface->display();
+		$skin->display();
 	}
 
 	/*
@@ -76,11 +125,11 @@ Class FrontEnd {
 	{
 		libxml_clear_errors();
 	
-		$interface = Skin::Load($base=false, $active=false, $loadata=false);
-		$interface->add("core/error.xsl");
-		$interface->setparam("error", '500-100');
+		$skin = Skin::Load($base=false, $active=false, $loadata=false);
+		$skin->add("core/error.xsl");
+		$skin->setparam("error", '500-100');
 		header('Status: 503 Service Temporarily Unavailable');
-		$interface->display();
+		$skin->display();
 	}
 
 	/*
