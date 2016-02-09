@@ -1,18 +1,23 @@
 <nav version="0.1">
-	<section label="General">
+	<section label="Inicio">
 		<item>
-			<label>Inicio</label>
-			<source>/</source>
+			<label>Requerimientos</label>
+			<source>/start/requirements.xml</source>
 		</item>
 		<item>
-			<label>Pedidos</label>
-			<source>/general/pedidos.xml</source>
+			<label>Instalación</label>
+			<source>/start/installation.xml</source>
+		</item>
+	</section>
+	<section label="Peticiones">
+		<item>
+			<label>Frontend</label>
+			<source>/workflow/frontend.xml</source>
 		</item>
 		<item>
-			<label>Respuestas</label>
-			<source>/general/respuestas.xml</source>
+			<label>Backend</label>
+			<source>/workflow/backend.xml</source>
 		</item>
-		
 	</section>
 	<section label="Módulos">
 		<item>

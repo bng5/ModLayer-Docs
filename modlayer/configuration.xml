@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-	<applicationID>Alternativa API</applicationID>
+	<applicationID>ModLayer Docs</applicationID>
 	<smtp>smtp.sendgrid.net</smtp>
 
 	<domain>http://local.doc</domain>

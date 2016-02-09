@@ -85,6 +85,13 @@
 	</p>
 </xsl:template>
 
+<xsl:template match="message">
+	<p class="message">
+		<xsl:apply-templates select="@*" mode="atts" />
+		<xsl:apply-templates />
+	</p>
+</xsl:template>
+
 <xsl:template match="text">
 	<p>
 		<xsl:apply-templates select="@*" mode="atts" />
