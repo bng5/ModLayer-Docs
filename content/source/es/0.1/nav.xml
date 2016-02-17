@@ -9,14 +9,18 @@
 			<source>/start/installation.xml</source>
 		</item>
 	</section>
-	<section label="Peticiones">
+	<section label="Configuracion">
 		<item>
-			<label>Frontend</label>
-			<source>/workflow/frontend.xml</source>
+			<label>Aplicación</label>
+			<source>/config/application.xml</source>
 		</item>
 		<item>
-			<label>Backend</label>
-			<source>/workflow/backend.xml</source>
+			<label>Módulos</label>
+			<source>/config/module.xml</source>
+		</item>
+		<item>
+			<label>Skin</label>
+			<source>/config/skin.xml</source>
 		</item>
 	</section>
 	<section label="Módulos">

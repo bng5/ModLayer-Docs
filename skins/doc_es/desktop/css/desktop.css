@@ -149,7 +149,7 @@ nav {
 	z-index:999;
 }
 nav .block {margin:0 0 20px 0;}
-nav .block h2 {color:#656565;font-size:21px;margin-bottom:5px;}
+nav .block h2 {color:#656565;font-size:19px;margin-bottom:0;}
 nav ul {list-style:none;background:none;}
 nav ul li {font-family:'source_sans_proregular';line-height:20px;}
 nav ul li a.active {color:#000;}

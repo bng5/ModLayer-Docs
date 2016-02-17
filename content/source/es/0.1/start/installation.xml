@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xml>
   <page>
-    <title>Respuestas</title>
+    <title>Instalación</title>
     <subtitle>Formato</subtitle>
     <text>
       El servicio provee dos formatos disponibles de respuesta <mono>XML</mono> y <mono>JSON</mono>.
