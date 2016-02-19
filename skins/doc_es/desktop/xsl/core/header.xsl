@@ -16,7 +16,7 @@
 				<xsl:if test="count($context/versions/version) &gt; 1">
 					<xsl:attribute name="class">version toggle</xsl:attribute>
 				</xsl:if>
-				<span class="trigger">Version <xsl:value-of select="$context/nav/@version" /></span>
+				<span class="trigger">Version <xsl:value-of select="$activeVersion" /></span>
 				<xsl:if test="count($context/versions/version) &gt; 1">
 					<ul>
 						<xsl:for-each select="$context/versions/version">

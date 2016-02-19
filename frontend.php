@@ -55,7 +55,13 @@ Class FrontEnd {
 			'/nav', 
 			null
 		);
+
+		$temp = explode('/', $version);
+		$activeVer = $temp[count($temp)-1];
+
+		$skin->setparam('activeVersion', $activeVer);
 		$skin->add('page.xsl');
+
 
 		self::output($skin);
 		// $skin->display();

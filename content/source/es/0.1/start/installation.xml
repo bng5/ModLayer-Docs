@@ -28,6 +28,7 @@
     <box>
       <a href="http://shakespeare.alternativateatral.com/api/Review.GetContent.xml" target="_blank">http://shakespeare.alternativateatral.com/api/Review.GetContent.xml</a>
     </box>
+    
     <text>
       mostrará un listado en <mono>XML</mono>, mientras que 
     </text>

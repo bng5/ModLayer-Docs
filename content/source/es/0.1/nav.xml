@@ -23,11 +23,7 @@
 			<source>/config/skin.xml</source>
 		</item>
 	</section>
-	<section label="Módulos">
-		<item>
-			<label>Críticas</label>
-			<source>/modulos/review.xml</source>
-		</item>
+	<section label="Para ordenar">
 		<item>
 			<label>Clips</label>
 			<source>/modulos/clip.xml</source>

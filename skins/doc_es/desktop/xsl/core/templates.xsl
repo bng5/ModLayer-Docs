@@ -146,6 +146,17 @@
 	<span class="arrow-left">&#xa0;</span>
 </xsl:template>
 
+<xsl:template match="app_url">
+	<a href="{$config/system/domain}" target="_blank" class="external"><xsl:value-of select="$config/system/domain"/>/</a>
+</xsl:template>
+
+<xsl:template match="appUrl">
+	<xsl:value-of select="$appUrl"/>
+</xsl:template>
+
+<xsl:template match="domain">
+	<xsl:value-of select="$config/system/domain"/>
+</xsl:template>
 
 <xsl:template match="list[@type='ordered']">
 	<ol>

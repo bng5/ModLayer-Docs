@@ -6,6 +6,8 @@
 <xsl:variable name="config" select="/xml/configuration"/>
 <xsl:variable name="content" select="/xml/content"/>
 <xsl:variable name="context" select="/xml/context"/>
+<xsl:param name="activeVersion" />
+
 <xsl:variable name="appUrl"><!-- 
 	 --><xsl:choose><!-- 
 		 --><xsl:when test="$config/system/domain/@subdir != ''"><!-- 
