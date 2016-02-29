@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+  <page>
+    <title>Templates</title>
+    <text>
+      Los templates sirven para armar la grilla que servirá de base para la home del sistema.
+    </text>
+
+    <subtitle>Recursos disponibles</subtitle>
+    <list>
+      <item><a href="#creacion-de-templates">Creación de Templates</a></item>
+    </list>
+
+    <method>Creación de Templates</method>
+    <text>
+       El módulo home ofrece un template por defecto el cual se divide en tres partes <mono>configuration</mono>, <mono>frontend</mono> y <mono>backend</mono>. El más importante
+       de los tres es <mono>configuration</mono> ya que en dicho apartado se indican tanto los parámentros 
+       que va a recibir la home así como también el número y tipo de elementos que se van a poder instanciar 
+       en ella.
+    </text>
+    <text>
+      Configuration:
+    </text>
+<code>
+  <configuration>
+    <object id="1">
+      <allow>
+            <module name="article" />
+        </allow>
+        <params>
+            <param name="title" value="1"/>
+            <param name="summary" value="1"/>
+            <param name="image" value="1"/>
+            <param name="image_width" value="400"/>
+            <param name="image_height" value="400"/>
+        </params>
+    </object>
+    <object id="2">
+      <allow>
+        <module name="article" />
+      </allow>
+      <params>
+            <param name="title" value="1"/>
+            <param name="summary" value="1"/>
+            <param name="image" value="1"/>
+            <param name="image_width" value="400"/>
+            <param name="image_height" value="400"/>
+        </params>
+    </object>
+    <object id="3">
+      <allow>
+        <module name="article" />
+      </allow>
+      <params>
+            <param name="title" value="1"/>
+            <param name="summary" value="1"/>
+            <param name="image" value="1"/>
+            <param name="image_width" value="400"/>
+            <param name="image_height" value="400"/>
+        </params>
+    </object>
+    <object id="4">
+      <allow>
+        <module name="article" />
+      </allow>
+      <params>
+            <param name="title" value="1"/>
+            <param name="summary" value="1"/>
+            <param name="image" value="1"/>
+            <param name="image_width" value="400"/>
+            <param name="image_height" value="400"/>
+        </params>
+    </object>
+    <object id="5">
+      <allow>
+        <module name="article" />
+      </allow>
+      <params>
+            <param name="title" value="1"/>
+            <param name="summary" value="1"/>
+            <param name="image" value="1"/>
+            <param name="image_width" value="400"/>
+            <param name="image_height" value="400"/>
+        </params>
+    </object>
+    <object id="6">
+      <allow>
+        <module name="article" />
+      </allow>
+      <params>
+            <param name="title" value="1"/>
+            <param name="summary" value="1"/>
+            <param name="image" value="1"/>
+            <param name="image_width" value="400"/>
+            <param name="image_height" value="400"/>
+        </params>
+    </object>
+    <object id="7">
+      <allow>
+        <module name="article" />
+      </allow>
+      <params>
+            <param name="title" value="1"/>
+            <param name="summary" value="1"/>
+            <param name="image" value="1"/>
+            <param name="image_width" value="400"/>
+            <param name="image_height" value="400"/>
+        </params>
+    </object>
+    <object id="8">
+      <allow>
+        <module name="article" />
+      </allow>
+      <params>
+            <param name="title" value="1"/>
+            <param name="summary" value="1"/>
+            <param name="image" value="1"/>
+            <param name="image_width" value="400"/>
+            <param name="image_height" value="400"/>
+        </params>
+    </object>
+
+    <parameters>
+        <param name="title_box1" display="Título Caja Contenido 1" type="string"/>
+        <param name="title_box2" display="Título Caja Contenido 2" type="string"/>
+        <param name="title_box3" display="Título Caja Contenido 3" type="string"/>
+    </parameters>
+  </configuration>
+</code>
+    <text>
+      Como se mencionó anteriormente el apartado de <mono>configuration</mono> es el más importante.
+      Básicamente es un archivo <mono>xml</mono> en el cual se pueden diferenciar dos secciones a editar. 
+      Una de ellas está destinada a la configuración de un elemento y la otra está destinada a la 
+      configuración de los parámetros que podrán ser editables para una home.
+    </text>
+    <text>
+      En la sección destinada a la configuración de un elemento se tiene el siguiente bloque:
+    </text>
+<code>
+  <object id="x">
+    <allow>
+        <module name="module_name" />
+    </allow>
+    <params>
+        <param name="title" value="1"/>
+        <param name="summary" value="1"/>
+        <param name="image" value="1"/>
+        <param name="image_width" value="400"/>
+        <param name="image_height" value="400"/>
+    </params>
+  </object>
+</code>
+    <text>
+      El bloque inicia con el nodo padre <mono>object</mono>. Cada nodo <mono>object</mono> tiene un atributo <mono>id</mono> que identifica a cada posición dentro de la grilla. Para cada elemento se pueden configurar dos cosas: el tipo de elemento que se podrá instanciar en esa posición y los parámetros que se podrán editar en él. 
+    </text>
+    <text>
+      Los elementos que se pueden instanciar en cada posición puede ser de cuatro tipos: <mono>artículos</mono>,
+      <mono>clips</mono>, <mono>personajes</mono> y <mono>promociones</mono>.
+    </text>
+    <text>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat voluptatum odit at sit. Nostrum quo provident dignissimos saepe dolores commodi doloribus amet in consectetur, culpa minima omnis unde magni numquam?
+    </text>
+<code>
+  <parameters>
+      <param name="title_box1" display="Título Caja Contenido 1" type="string"/>
+      <param name="title_box2" display="Título Caja Contenido 2" type="string"/>
+      <param name="title_box3" display="Título Caja Contenido 3" type="string"/>
+  </parameters>
+</code>
+    <text>
+      Frontend:
+    </text>
+<code>
+  <xml>
+    <slide>
+      <object id="1" />
+      <object id="2" />
+      <object id="3" />
+      <object id="4" />
+    </slide>
+    <notas>
+      <object id="5" />
+      <object id="6" />
+      <object id="7" />
+      <object id="8" />
+    </notas>
+  </xml>
+</code>
+    <text>
+      Backend:
+    </text>
+<code>
+  <table width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+      <td colspan="4">
+        <label>Slide</label>
+      </td>
+    </tr>
+    <tr>
+      <td width="25%">
+        <object id="1"></object>
+      </td>
+      <td width="25%">
+        <object id="2"></object>
+      </td>
+      <td width="25%">
+        <object id="3"></object>
+      </td>
+      <td width="25%">
+        <object id="4"></object>
+      </td>
+    </tr>
+  </table>
+  <table width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+      <td colspan="4">
+        <label>Notas Destacadas</label>
+      </td>
+    </tr>
+    <tr>
+      <td width="25%">
+        <object id="5"></object>
+      </td>
+      <td width="25%">
+        <object id="6"></object>
+      </td>
+      <td width="25%">
+        <object id="7"></object>
+      </td>
+      <td width="25%">
+        <object id="8"></object>
+      </td>
+    </tr>
+  </table>
+</code>
+    <subtitle>Parámetros</subtitle>
+    <parameters>
+      <param>
+        <name>call</name>
+        <type>String</type>
+        <required>Si</required>
+        <desc>Nombre del método a ser llamado</desc>
+      </param>
+      <param>
+        <name>currentPage</name>
+        <type>Integer</type>
+        <required>No</required>
+        <desc>Número de página a mostrar.<br/>Valor por defecto: 1</desc>
+      </param>
+      <param>
+        <name>pageSize</name>
+        <type>Integer</type>
+        <required>No</required>
+        <desc>Cantidad de ítems por página.<br/>Valor por defecto: 10</desc>
+      </param>
+      <param>
+        <name>startdate</name>
+        <type>String</type>
+        <required>No</required>
+        <desc>Fecha de inicio para rango de fechas en el formato “Y-m-d” (se puede agregar h:m:s)</desc>
+      </param>
+      <param>
+        <name>enddate</name>
+        <type>String</type>
+        <required>No</required>
+        <desc>Fecha de fin para rango de fechas en el formato “Y-m-d” (se puede agregar h:m:s)</desc>
+      </param>
+    </parameters>
+
+    <text>
+       Ejemplo llamada por URL (con un parámetro):
+    </text>
+    <text>
+       Respuesta en <mono>XML</mono>
+       <box>
+          <a target="_blank" href="http://shakespeare.alternativateatral.com/api/Clip.GetContent.xml?currentPage=2">http://shakespeare.alternativateatral.com/api/Clip.GetContent.xml?currentPage=2</a>
+       </box>
+    </text>
+    <text>
+       Respuesta en <mono>JSON</mono>
+       <box>
+          <a target="_blank" href="http://shakespeare.alternativateatral.com/api/Clip.GetContent.json?currentPage=2">http://shakespeare.alternativateatral.com/api/Clip.GetContent.json?currentPage=2</a>
+       </box>
+    </text>
+
+    <divider />
+
+
+    <method>SetContent</method>
+    <text>
+      Tipo <arrow_right /> Escritura
+      <br/>
+      Acceso por URL <arrow_right /> No
+    </text>
+    <text>
+      Este método permite dar de alta un clip (video, por el momento solo de Youtube y Vimeo) a partir de la URL del video y proporcionando el nombre del servicio (esto se hizo así pensado para agregar nuevos servicios a futuro).
+    </text>
+    <text>
+      Ejemplo string json php:
+    </text>
+<code>
+$json = ‘{
+   "call" : "Clip.SetContent",
+   "url" : "https://www.youtube.com/watch?v=kC9YNz-h828",
+   "service" : "youtube",
+   "ext_id" : 111,
+   "ext_type" : "video"
+}’;
+
+$json = ‘{
+   "call" : "Clip.SetContent",
+   "url" : "https://vimeo.com/146064760",
+   "service" : "vimeo",
+   "ext_id" : 111,
+   "ext_type" : "video"
+}’;
+</code>
+    <text>
+    	* La URL para Youtube puede variar en su estructura. El sistema está preparado para recibir una URL de Youtube/Vimeo en cualquier de sus formatos.
+    </text>
+    <subtitle>Parámetros</subtitle>
+    <parameters>
+      <param>
+        <name>call</name>
+        <type>String</type>
+        <required>Si</required>
+        <desc>Nombre del método a ser llamado</desc>
+      </param>
+      <param>
+        <name>url</name>
+        <type>String</type>
+        <required>Si</required>
+        <desc>URL del video</desc>
+      </param>
+      <param>
+        <name>service</name>
+        <type>String</type>
+        <required>Si</required>
+        <desc>Nombre del servicio del cual se importará el video (Youtube o Vimeo)</desc>
+      </param>
+      <param>
+        <name>ext_id</name>
+        <type>Integer</type>
+        <required>Si</required>
+        <desc>ID externo</desc>
+      </param>
+      <param>
+        <name>ext_type</name>
+        <type>String</type>
+        <required>Si</required>
+        <desc>Tipo externo</desc>
+      </param>
+    </parameters>
+    <text>
+       Por motivos de pruebas, dejamos abierto este método para ser llamado por URL.
+    </text>
+    <text>
+       URL de ejemplo:
+    </text>
+    <text>
+       Respuesta en <mono>XML</mono>
+       <box>
+          <a target="_blank" href="http://shakespeare.alternativateatral.com/api/Clip.SetContent.xml?service=youtube&amp;url=https://www.youtube.com/watch?v=gMc4zowylTg&amp;id=111&amp;type=video">http://shakespeare.alternativateatral.com/api/Clip.SetContent.xml?service=youtube&amp;url=https://www.youtube.com/watch?v=gMc4zowylTg&amp;id=111&amp;type=video</a>
+       </box>
+       <box>
+         <a target="_blank" href="http://shakespeare.alternativateatral.com/api/Clip.SetContent.xml?service=vimeo&amp;url=https://vimeo.com/146064760&amp;id=111&amp;type=video">http://shakespeare.alternativateatral.com/api/Clip.SetContent.xml?service=vimeo&amp;url=https://vimeo.com/146064760&amp;id=111&amp;type=video</a>
+       </box>
+    </text>
+    <text>
+       Respuesta en <mono>JSON</mono>
+       <box>
+         <a target="_blank" href="http://shakespeare.alternativateatral.com/api/Clip.SetContent.json?service=youtube&amp;url=https://www.youtube.com/watch?v=gMc4zowylTg&amp;id=999&amp;type=video">http://shakespeare.alternativateatral.com/api/Clip.SetContent.json?service=youtube&amp;url=https://www.youtube.com/watch?v=gMc4zowylTg&amp;id=999&amp;type=video</a>
+       </box>
+       <box>
+         <a target="_blank" href="http://shakespeare.alternativateatral.com/api/Clip.SetContent.json?service=vimeo&amp;url=https://vimeo.com/146064760&amp;id=111&amp;type=video">http://shakespeare.alternativateatral.com/api/Clip.SetContent.json?service=vimeo&amp;url=https://vimeo.com/146064760&amp;id=111&amp;type=video</a>
+       </box>
+    </text>
+
+    <divider />
+
+
+    <method>GetItem</method>
+    <text>
+      Tipo <arrow_right /> Solo lectura
+      <br/>
+      <a href="/general/respuestas.xml#acceso-por-url-solo-lectura">Acceso por URL</a> <arrow_right /> Si
+    </text>
+    <text>
+    	Este método permite obtener los datos de un clip (video) del sistema a través de su ID.
+    </text>
+    <text>
+      Ejemplo string json php:
+    </text>
+<code>
+$json = ‘{
+   "call" : "Clip.GetContent",
+   "id" : 236
+}’;
+</code>
+    <subtitle>Parámetros</subtitle>
+    <parameters>
+      <param>
+        <name>call</name>
+        <type>String</type>
+        <required>Si</required>
+        <desc>Nombre del método a ser llamado</desc>
+      </param>
+      <param>
+        <name>id</name>
+        <type>Integer</type>
+        <required>Si</required>
+        <desc>ID del clip</desc>
+      </param>
+    </parameters>
+
+    <text>
+       Ejemplo de llamada por URL:
+    </text>
+    <text>
+       Respuesta en <mono>XML</mono>
+       <box>
+         <a target="_blank" href="http://shakespeare.alternativateatral.com/api/Clip.GetItem.xml?id=23">http://shakespeare.alternativateatral.com/api/Clip.GetItem.xml?id=23</a>
+       </box>
+    </text>
+    <text>
+       Respuesta en <mono>JSON</mono>
+       <box>
+         <a target="_blank" href="http://shakespeare.alternativateatral.com/api/Clip.GetItem.json?id=23">http://shakespeare.alternativateatral.com/api/Clip.GetItem.json?id=23</a>
+       </box>
+    </text>
+
+    <divider />
+
+  </page>
+</xml>
