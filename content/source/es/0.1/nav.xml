@@ -8,6 +8,10 @@
 			<label>Instalación</label>
 			<source>/start/installation.xml</source>
 		</item>
+		<item>
+			<label>Templates</label>
+			<source>/start/template.xml</source>
+		</item>
 	</section>
 	<section label="Configuracion">
 		<item>
