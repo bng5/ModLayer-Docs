@@ -6,8 +6,7 @@
 <xsl:template name="footer">
 	<footer>
 		<div class="container floatFix">
-			ModLayer	
-			<!-- Powered by <a href="http://www.modlayer.org" target="_blank">ModLayer</a> -->
+			<a href="http://www.float.la" target="_blank" style="font-size:13px;color:#335577;">Float.la</a>
 		</div>
 	</footer>
 

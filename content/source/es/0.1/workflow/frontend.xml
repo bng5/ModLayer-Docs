@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+  <page>
+    <title>Frontend</title>
+    <text>
+      El sistema gestiona las peticiones de frontend y de <a href="/workflow/backend.xml">backend</a> de manera separada. 
+      <br/>
+      Todas las peticiones realizadas se canalizan a través del archivo <mono>index.php</mono> ubicado en el directorio raíz de la aplicación.
+    </text>
+    
+    <message>
+      Es requisito tener activo módulo <mono><a href="http://httpd.apache.org/docs/2.2/mod/mod_rewrite.html" target="_blank">mod_rewrite</a></mono> de Apache y habilitar el uso de <mono><a href="https://httpd.apache.org/docs/2.2/howto/htaccess.html" target="_blank">.htaccess</a></mono>.
+    </message>
+    <subtitle>Manejo de reglas</subtitle>
+    <text>
+      Para poder acceder al servicio es necesario enviar en el <mono>HEADER</mono> del pedido un parametro con el nombre <mono>APIKEY</mono> y el valor de la Apikey otorgada.
+    </text>
+<code linenums="1">
+Host: shakespeare.alternativateatral.com
+Accept: */* 
+apikey: 3b215471706c796964217d6153505d
+Content-Length: 50 
+Content-Type: application/x-www-form-urlencoded
+</code>
+    <divider />
+    <subtitle>Parámetros</subtitle>
+    <text>
+      El servicio espera un objeto <mono>JSON</mono> (<a href="/general/respuestas.xml#error-501">bien formado</a>) que deberá ser enviado por <mono>POST</mono> en el cual  se deberá incluir <b>siempre</b> el atributo <mono>call</mono> que hace referencia al recurso - módulo y método - que se quiere invocar y el resto de los parámetros dependerá de ese recurso.
+    </text>
+    <code>
+  {
+    "call" : "Review.SetContent", // Requerido
+    // Otros parametros ...
+  }</code>
+    <text>
+      Luego se incluirán los parámetros que sean necesarios y/o requeridos por cada recurso.
+    </text>
+    <text>
+      Los nombres de los recursos de la api pueden contener en el nombre un punto para poder diferenciar el <i>módulo</i> al que se hace referencia.
+      <br/>
+      Permitiendo tener nombres más simples y que pueden llegar a repetirse en distintos módulos.
+    </text>
+    <text>
+      Por ejemplo el llamado <b class="mono">“Review.SetContent”</b> hace referencia al método <b>SetContent</b> del módulo <b><i>Review</i></b>.
+    </text>
+    <text>
+      Dentro del sistema se puede configurar qué módulos y métodos estarán disponibles para ser llamados junto con los parámetros para cada uno. En el caso que se reciba el nombre de un método sin el prefijo, se invocará a la primera ocurrencia de ese nombre de método en la configuración sin validar el módulo.
+      <br/>
+      De esta manera podemos agregar funcionalidad a la api delegando a los módulos la parte del negocio. 
+    </text>
+    
+    <divider />
+  </page>
+</xml>

@@ -5,7 +5,8 @@
 
 <!-- Menu -->
 <xsl:template name="navigation">
-	<nav>
+	<nav id="menu">
+		<a href="#menu" class="menu">&#xa0;</a>
 		<xsl:apply-templates select="$context/nav" mode="nav" />
 	</nav>
 </xsl:template>
@@ -84,6 +85,13 @@
 	</p>
 </xsl:template>
 
+<xsl:template match="message">
+	<p class="message">
+		<xsl:apply-templates select="@*" mode="atts" />
+		<xsl:apply-templates />
+	</p>
+</xsl:template>
+
 <xsl:template match="text">
 	<p>
 		<xsl:apply-templates select="@*" mode="atts" />
@@ -138,6 +146,17 @@
 	<span class="arrow-left">&#xa0;</span>
 </xsl:template>
 
+<xsl:template match="app_url">
+	<a href="{$config/system/domain}" target="_blank" class="external"><xsl:value-of select="$config/system/domain"/>/</a>
+</xsl:template>
+
+<xsl:template match="appUrl">
+	<xsl:value-of select="$appUrl"/>
+</xsl:template>
+
+<xsl:template match="domain">
+	<xsl:value-of select="$config/system/domain"/>
+</xsl:template>
 
 <xsl:template match="list[@type='ordered']">
 	<ol>
@@ -182,11 +201,10 @@
 <xsl:template match="parameters">
 	<table class="parameters" cellpadding="0" cellspacing="0" border="0">
 		<tr>
-			<th width="30%">Nombre</th>
-			<th width="10%">Tipo</th>
-			<th width="10%">Requerido</th>
-			<th width="50%">Descripción</th>
-			
+			<th width="40%">Nombre</th>
+			<!-- <th width="10%">Tipo</th>
+			<th width="10%">Requerido</th> -->
+			<th width="60%">Descripción</th>
 		</tr>
 		<xsl:apply-templates mode="parameter" />	
 	</table>
@@ -194,15 +212,17 @@
 
 <xsl:template match="param" mode="parameter">
 	<tr>
-		<td class="name">
-			<span><xsl:apply-templates select="name" /></span>
+		<td>
+			<span class="name"><xsl:apply-templates select="name" /></span>
+			<span class="type"><b>Tipo: </b> <xsl:apply-templates select="type" /></span>
+			<span class="required"><b>Requerido: </b> <xsl:apply-templates select="required" /></span>
 		</td>
-		<td class="type">
+		<!-- <td class="type">
 			<span><xsl:apply-templates select="type" /></span>
 		</td>
 		<td class="required">
 			<span class="required"><xsl:apply-templates select="required" /></span>
-		</td>
+		</td> -->
 		<td class="desc">
 			<xsl:apply-templates select="desc" />
 		</td>
