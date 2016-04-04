@@ -30,16 +30,27 @@
       Contiene los siguientes archivos:
     </text>
     <list>
+      <item>/admin/.htaccess</item>
       <item>/admin/index.php</item>
       <item>/admin/upload.php</item>
-      <item>/admin/.htaccess</item>
     </list>
-    <box>
-      http://shakespeare.alternativateatral.com/api/
-    </box>
     <text>
-      Se deberá concatenar el nombre del método y como extensión el formato de respuesta deseado. Ejemplo: 
+      <b>.htaccess</b> aplica las directivas de mod_rewrite para canalizar todos los pedidos a través del <i>index.php</i>
     </text>
+    <text>
+      <b>index.php</b> inicializa el sistema y parsea todas las URLs de backend.
+    </text>
+    <text>
+      <b>upload.php</b> gestiona las subidas de archivos de manera segura.
+    </text>
+    
+    <subtitle>/content</subtitle>
+    <text>
+      Es el directorio donde se almacenan todos los archivos físicos generados por el sistema, como imagenes subidas, imagenes generadas por el <mono>bucket</mono>, archivos de caché, xmls publicados, archivos json del <mono>autosave</mono>, archivos de audio y video.
+      <br/>
+      La estructura interna de directorios dependerá de los módulos activos en el sistema y su configuración.
+    </text>
+    
     <box>
       <a href="http://shakespeare.alternativateatral.com/api/Review.GetContent.xml" target="_blank">http://shakespeare.alternativateatral.com/api/Review.GetContent.xml</a>
     </box>
