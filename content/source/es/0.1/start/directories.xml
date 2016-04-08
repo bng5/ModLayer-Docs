@@ -7,7 +7,7 @@
       Los directorios están organizados de manera simple y funcional. Permitiendo separar el contenido generado del sistema (imagenes, xmls, cache, sesiones, etc) de la capa de visualización y los módulos.
     </text>
 
-    
+    <!-- RAIZ -->
     <text>
       En el directorio raiz de la aplicación se encuentran los siguientes directorios y archivos:<br/>
     </text>
@@ -21,15 +21,17 @@
       <item>/robots.txt</item>
     </list>
     <image>
-      <source>/content/images/directories/directories.png</source>
+      <source>/content/images/directories/root.png</source>
       <caption>Captura de los directorios en el raiz de la aplicación</caption>
     </image>
     <text>
       Se detalla cada uno abajo:
     </text>
     
+    <!-- RAIZ -->
     <inner-title>Detalle</inner-title>
 
+    <!-- ADMIN -->
     <subtitle>/admin</subtitle>
     <text>
       Este directorio solo está presente en desarrollos con backend. Funciona como "<i>mascara</i>" para acceder a los módulos, permitiendo aplicar todas las medidas de seguridad.
@@ -50,27 +52,77 @@
     <text>
       <b>upload.php</b> gestiona las subidas de archivos de manera segura.
     </text>
-    
+    <!-- ADMIN -->
+
+    <!-- CONTENT -->
     <subtitle>/content</subtitle>
     <text>
       Es el directorio donde se almacenan todos los archivos físicos generados por el sistema, como imagenes subidas, imagenes generadas por el <mono>bucket</mono>, archivos de caché, xmls publicados, archivos json del <mono>autosave</mono>, archivos de audio y video.
-      <br/><br/>
+      <br/>
       La estructura interna de directorios dependerá de los módulos activos en el sistema y su configuración.
     </text>
+    <text>
+      Esta separación del contenido está pensada para poder escalar en aplicaciones de gran volumen de tráfico, donde la infraestructura puede ir mutando según las necesidades. Por ejemplo, una aplicación que está corriendo en un servidor y luego debe migrarse a una estructura mas grande de 3 servidores de frontend detrás de un <mono>Load Balancer</mono> y otro servidor de backend. En ese caso lo mas conveniente es utilizar un <a href="https://es.wikipedia.org/wiki/Almacenamiento_conectado_en_red" target="_blank"><mono>NAS</mono></a> conectado a cada server y el directorio <mono>content</mono> será un link simbolico, para que todas las instancias de la aplicación tengan acceso al contenido generado por el backend. 
+    </text>
+    <!-- CONTENT -->
 
+
+    <!-- MODLAYER -->
     <subtitle>/modlayer</subtitle>
     <text>
-      Este es el directorio donde se almacena la interfaz gráfica utilizada por el <mono>frontend</mono>.
-      <br/>
-      El sistema permite utilizar skins intercambiables, con interfaces puntuales por dispositvos.
+      Es el directorio donde se aloja el sistema.
+    </text>
+    
+    <image>
+      <source>/content/images/directories/modlayer.png</source>
+      <caption>Captura del directorio y sus subdirectorios</caption>
+    </image>
+
+    <text>
+      Dentro de este directorio, encontramos todos los recursos utilizados por el sistema. Se detalla a continuación cada una de las partes:
     </text>
 
+    <!-- MODLAYER/CONFIGURATION -->
+    <subtitle>/modlayer/configuration</subtitle>
+    <text>
+      Este directorio como lo indica su nombre, aloja solo archivos de configuración.
+    </text>
+    <text>
+      <arrow_right/><b>environments: </b>subdirectorio que contiene la configuración general del sistema. Se puede agregar un archivo de configuración por cada ambiente definido para la aplicación, simplificando el <i>deploy</i> de desarrollo a producción (o cualquier ambiente). El nombre de cada archivo corresponde al ambiente que corresponde.
+    </text>
+    <text>
+      <arrow_right/><b>backend.rules.xml: </b>configuración de reglas de rewrite genericas para cualquier módulo que aplican solo a BackEnd. 
+    </text>
+    <text>
+      <arrow_right/><b>frontend.rules.xml: </b>configuración de reglas de rewrite de FrontEnd que no son manejadas por ningún módulo. Estas reglas aplican métodos de la clase <mono>Skin</mono> directamente y se utiliza generalmente para el servicio de imagenes <i>(bucket)</i> y "friendly errors" 404 y 500-100.
+    </text>
+    <image>
+      <source>/content/images/directories/config.png</source>
+      <caption>Captura del directorio y sus subdirectorios</caption>
+    </image>
+    <!-- MODLAYER/CONFIGURATION -->
+
+    <!-- MODLAYER/CORE -->
+    <subtitle>/modlayer/core</subtitle>
+    <text>
+      En este directorio se alojan las clases requeridas por el sistema y que proveen herramientas a los distintos módulos. Contiene 4 subdirectorios donde se agrupan esas clases por tipo.
+    </text>
+    <image>
+      <source>/content/images/directories/core.png</source>
+      <caption>Captura del directorio y sus subdirectorios</caption>
+    </image>
+    <!-- MODLAYER/CORE -->
+    <!-- MODLAYER -->
+
+
+    <!-- SKINS -->
     <subtitle>/skins</subtitle>
     <text>
       Este es el directorio donde se almacena la interfaz gráfica utilizada por el <mono>frontend</mono>.
       <br/>
       El sistema permite utilizar skins intercambiables, con interfaces puntuales por dispositvos.
     </text>
+    <!-- SKINS -->
 
 
     

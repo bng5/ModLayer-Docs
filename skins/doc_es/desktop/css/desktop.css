@@ -341,6 +341,7 @@ table.parameters .name span {color:#333;font-size:17px;}
 .image-caption img {
 	display:block;
 	border:1px solid #e0e0e0;
+	max-width:100%;
 }
 .image-caption span {
 	display:block;
@@ -407,6 +408,8 @@ table.parameters .name span {color:#333;font-size:17px;}
 		border-left:0;
 	}
 	#top .logo {display:none;}
+
+
 }
 
 
