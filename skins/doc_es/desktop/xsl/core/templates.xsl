@@ -66,7 +66,7 @@
 	</h3>
 </xsl:template>
 
-<xsl:template match="method[text()]">
+<xsl:template match="method[text()]|inner-title[text()]">
 	<xsl:variable name="thisTxt">
 		<xsl:call-template name="normalize.text">
 			<xsl:with-param name="string" select="."/>
@@ -230,6 +230,14 @@
 </xsl:template>
 
 
+<xsl:template match="image">
+	<div class="image-caption">
+		<img src="{./source}" alt="" />
+		<span><xsl:apply-templates select="caption" /></span>
+	</div>
+</xsl:template>
+
+
 <xsl:template match="html">
 	<xsl:apply-templates />
 </xsl:template>
@@ -238,47 +246,6 @@
 <!-- Templates de content xml  -->
 
 
-
-<xsl:template name="share.box">
-<div class="share">
-	<span class="tw-btn">
-		<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal"  data-lang="es">Tweet</a> <!-- data-via="LivePassArg" -->
-		<script type="text/javascript" src="http://platform.twitter.com/widgets.js">&#xa0;</script>
-	</span>
-	<span class="fb-btn">
-		 <div id="fb-root">&#xa0;</div><!-- 
-		 --><script type="text/javascript"><!-- 
-			 -->(function(d, s, id) {<!-- 
-					-->var js, fjs = d.getElementsByTagName(s)[0];<!-- 
-					-->if (d.getElementById(id)) return;<!-- 
-					-->js = d.createElement(s); js.id = id;<!-- 
-					-->js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";<!-- 
-					-->fjs.parentNode.insertBefore(js, fjs);<!-- 
-				-->}<!-- 
-				-->(document, 'script', 'facebook-jssdk'));<!-- 
-			--></script>
-		 <div class="fb-like" data-send="false" data-layout="button_count" data-width="110" data-show-faces="true" data-font="arial">&#xa0;</div>
-		<!-- <a name="fb_share">&#xa0;</a>
-		<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script> -->
-		<!-- <div id="fb-root">&#xa0;</div>
-		<script src="http://connect.facebook.net/en_US/all.js#appId=174719735922838&amp;xfbml=1">&#xa0;</script>
-		<fb:like send="false" layout="button_count" width="100" show_faces="false" font="lucida grande">&#xa0;</fb:like> -->
-	</span>
-	<span class="gp-btn">
-		<!-- Place this tag where you want the +1 button to render -->
-		<g:plusone size="medium">&#xa0;</g:plusone>
-	</span>
-	<!-- Place this render call where appropriate -->
-	<script type="text/javascript">
-	  window.___gcfg = {lang: 'es-419'};
-	  (function() {
-	    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-	    po.src = 'https://apis.google.com/js/plusone.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-	  })();
-	</script>
-</div>
-</xsl:template>
 
 
 <!--TEMPLATES DE HTML-->

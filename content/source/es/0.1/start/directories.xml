@@ -12,17 +12,24 @@
       En el directorio raiz de la aplicación se encuentran los siguientes directorios y archivos:<br/>
     </text>
     <list>
-      <item>/admin/</item>
-      <item>/content/</item>
-      <item>/modlayer/</item>
-      <item>/skins/</item>
+      <item><a href="#admin">/admin/</a></item>
+      <item><a href="#content">/content/</a></item>
+      <item><a href="#modlayer">/modlayer/</a></item>
+      <item><a href="#skins">/skins/</a></item>
       <item>/index.php</item>
       <item>/.htaccess</item>
       <item>/robots.txt</item>
     </list>
+    <image>
+      <source>/content/images/directories/directories.png</source>
+      <caption>Captura de los directorios en el raiz de la aplicación</caption>
+    </image>
     <text>
       Se detalla cada uno abajo:
     </text>
+    
+    <inner-title>Detalle</inner-title>
+
     <subtitle>/admin</subtitle>
     <text>
       Este directorio solo está presente en desarrollos con backend. Funciona como "<i>mascara</i>" para acceder a los módulos, permitiendo aplicar todas las medidas de seguridad.
@@ -47,80 +54,26 @@
     <subtitle>/content</subtitle>
     <text>
       Es el directorio donde se almacenan todos los archivos físicos generados por el sistema, como imagenes subidas, imagenes generadas por el <mono>bucket</mono>, archivos de caché, xmls publicados, archivos json del <mono>autosave</mono>, archivos de audio y video.
-      <br/>
+      <br/><br/>
       La estructura interna de directorios dependerá de los módulos activos en el sistema y su configuración.
     </text>
-    
-    <box>
-      <a href="http://shakespeare.alternativateatral.com/api/Review.GetContent.xml" target="_blank">http://shakespeare.alternativateatral.com/api/Review.GetContent.xml</a>
-    </box>
-    
-    <text>
-      mostrará un listado en <mono>XML</mono>, mientras que 
-    </text>
-    <box>
-      <a href="http://shakespeare.alternativateatral.com/api/Review.GetContent.json" target="_blank">http://shakespeare.alternativateatral.com/api/Review.GetContent.json</a>
-    </box>
-    <text>
-      mostrará el mismo resultado en <mono>JSON</mono>. 
-      Los parámetros de cada método se recibirán por <mono>GET</mono> y son los mismos que se describen para cada recurso un objecto <mono>Json</mono>. Ejemplo:
-    </text>
-    <box>
-      <a href="http://shakespeare.alternativateatral.com/api/Review.GetContent.xml?id=929&amp;type=Espectáculo" target="_blank">http://shakespeare.alternativateatral.com/api/Review.GetContent.xml?id=929&amp;type=Espectáculo</a>
-    </box>
-    
-    <divider />
-    <subtitle>Código</subtitle>
-    <text>
-      Cada respuesta del servicio proveerá un código numérico, ese código representa el estado de la respuesta y puede contener los siguiente valores:
-    </text>
-    <table>
-      <tr>
-        <th width="20%" align="center">Código</th>
-        <th width="80%">Descripción</th>
-      </tr>
-      <tr>
-        <td align="center">200</td>
-        <td>Ok</td>
-      </tr>
-      <tr>
-        <td align="center">400</td>
-        <td>Bad Request: One of the request inputs is not valid</td>
-      </tr>
-      <tr>
-        <td align="center">403</td>
-        <td>Forbidden: The server failed to authenticate the request. Verify that the value of Authorization header is formed correctly.</td>
-      </tr>
-      <tr>
-        <td align="center">404</td>
-        <td>Not Found: The specified resource does not exist.</td>
-      </tr>
-      <tr>
-        <td align="center">416</td>
-        <td>Requested Range Not Satisfiable: The range specified is invalid for the current size of the resource.</td>
-      </tr>
-      <tr>
-        <td align="center">500</td>
-        <td>Internal Server Error: The server encountered an internal error. Please retry the request.</td>
-      </tr>
-      <tr>
-        <td align="center" id="error-501">501</td>
-        <td>Internal Server Error: The json object is not well formed or has errors.</td>
-      </tr>
-      <tr>
-        <td align="center">503</td>
-        <td>Service Unavailable: The server is currently unable to receive requests. Please retry your request.</td>
-      </tr>
-    </table>
 
-    <subtitle>Fecha y hora</subtitle>
+    <subtitle>/modlayer</subtitle>
     <text>
-      Junto con el código de la respuesta se incluyen los datos de la fecha, la hora y el tiempo que demoró en ejecutarse el pedido. Los nombres de estos campos son:
+      Este es el directorio donde se almacena la interfaz gráfica utilizada por el <mono>frontend</mono>.
+      <br/>
+      El sistema permite utilizar skins intercambiables, con interfaces puntuales por dispositvos.
     </text>
+
+    <subtitle>/skins</subtitle>
     <text>
-      <b>timestamp</b> <arrow_right /> Fecha y hora en formato linux timestamp.<br/>
-      <b>datetime</b> <arrow_right /> Fecha y hora en formato <mono>YYYY-MM-DD HH:MM</mono>.<br/>
-      <b>runtime</b> <arrow_right /> Tiempo de ejecución en segundos.<br/>
+      Este es el directorio donde se almacena la interfaz gráfica utilizada por el <mono>frontend</mono>.
+      <br/>
+      El sistema permite utilizar skins intercambiables, con interfaces puntuales por dispositvos.
     </text>
+
+
+    
+    
   </page>
 </xml>
