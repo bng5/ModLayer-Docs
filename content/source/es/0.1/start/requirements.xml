@@ -1,51 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xml>
   <page>
-    <title>Pedidos</title>
+    <title>Requerimientos</title>
     
     <text>
-      El servicio cuenta con recursos del tipo escritura y solo lectura.<br/>
-      Los llamados deberán hacerse a la url del servicio enviando por <mono>POST</mono> un objeto <mono>Json</mono> con los parámetros deseados y la <mono>APIKey</mono> de autenticación en el <mono>HEADER</mono> del pedido.<br/>
-      Los recursos del tipo <i>"solo lectura" </i> <a href="/general/respuestas.xml#acceso-por-url-solo-lectura">se pueden acceder directamente por URL</a>.
+      El sistema podrá instalarse en un servidor (windows o linux) con los siguiente software:
     </text>
-    <subtitle>Autenticación </subtitle>
+    <list>
+      <item><mono>Apache</mono> con el módulo mod_rewrite activo.</item>
+      <item><mono>PHP >= 5.5</mono></item>
+      <item><mono>MySQL</mono> (en caso de usar backend)</item>
+    </list>
     <text>
-      Para poder acceder al servicio es necesario enviar en el <mono>HEADER</mono> del pedido un parametro con el nombre <mono>APIKEY</mono> y el valor de la Apikey otorgada.
-    </text>
-<code linenums="1">
-Host: shakespeare.alternativateatral.com
-Accept: */* 
-apikey: 3b215471706c796964217d6153505d
-Content-Length: 50 
-Content-Type: application/x-www-form-urlencoded
-</code>
-    <divider />
-    <subtitle>Parámetros</subtitle>
-    <text>
-      El servicio espera un objeto <mono>JSON</mono> (<a href="/general/respuestas.xml#error-501">bien formado</a>) que deberá ser enviado por <mono>POST</mono> en el cual  se deberá incluir <b>siempre</b> el atributo <mono>call</mono> que hace referencia al recurso - módulo y método - que se quiere invocar y el resto de los parámetros dependerá de ese recurso.
-    </text>
-    <code>
-  {
-    "call" : "Review.SetContent", // Requerido
-    // Otros parametros ...
-  }</code>
-    <text>
-      Luego se incluirán los parámetros que sean necesarios y/o requeridos por cada recurso.
+      La instalación por defecto de PHP tiene habilitadas todas las extensiones necesarias para el correcto funcionamiento del sistema. 
     </text>
     <text>
-      Los nombres de los recursos de la api pueden contener en el nombre un punto para poder diferenciar el <i>módulo</i> al que se hace referencia.
-      <br/>
-      Permitiendo tener nombres más simples y que pueden llegar a repetirse en distintos módulos.
+      En el caso de tener una instalación personalizada, se deberán activar las extensiones de <mono>PHP</mono>:  
     </text>
     <text>
-      Por ejemplo el llamado <b class="mono">“Review.SetContent”</b> hace referencia al método <b>SetContent</b> del módulo <b><i>Review</i></b>.
+      <arrow_right /> DOM<br/>
+      <arrow_right /> Libxml<br/>
+      <arrow_right /> XSL<br/>
+      <arrow_right /> PDO (con driver mysql)<br/>
+      <arrow_right /> Session<br/>
+      <arrow_right /> GD<br/>
+      <arrow_right /> cURL<br/>
     </text>
-    <text>
-      Dentro del sistema se puede configurar qué módulos y métodos estarán disponibles para ser llamados junto con los parámetros para cada uno. En el caso que se reciba el nombre de un método sin el prefijo, se invocará a la primera ocurrencia de ese nombre de método en la configuración sin validar el módulo.
-      <br/>
-      De esta manera podemos agregar funcionalidad a la api delegando a los módulos la parte del negocio. 
-    </text>
-    
     <divider />
   </page>
 </xml>

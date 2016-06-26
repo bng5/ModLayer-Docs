@@ -41,7 +41,7 @@
     <list>
       <item>/admin/.htaccess</item>
       <item>/admin/index.php</item>
-      <item>/admin/upload.php</item>
+      <!-- <item>/admin/upload.php</item> -->
     </list>
     <text>
       <b>.htaccess</b> aplica las directivas de mod_rewrite para canalizar todos los pedidos a través del <i>index.php</i>
@@ -49,9 +49,9 @@
     <text>
       <b>index.php</b> inicializa el sistema y parsea todas las URLs de backend.
     </text>
-    <text>
+    <!-- <text>
       <b>upload.php</b> gestiona las subidas de archivos de manera segura.
-    </text>
+    </text> -->
     <!-- ADMIN -->
 
     <!-- CONTENT -->
@@ -88,7 +88,7 @@
       Este directorio como lo indica su nombre, aloja solo archivos de configuración.
     </text>
     <text>
-      <arrow_right/><b>environments: </b>subdirectorio que contiene la configuración general del sistema. Se puede agregar un archivo de configuración por cada ambiente definido para la aplicación, simplificando el <i>deploy</i> de desarrollo a producción (o cualquier ambiente). El nombre de cada archivo corresponde al ambiente que corresponde.
+      <arrow_right/><b>environments: </b>subdirectorio que contiene la configuración general del sistema. Se puede agregar un archivo de configuración por cada ambiente definido para la aplicación, simplificando el <i>deploy</i> de desarrollo a producción (o cualquier ambiente). El nombre de cada archivo es de libre elección y se pasa como paramentro al inicialiar el sistema en <mono>load.php</mono>, pero se recomienda usar el nombre del ambiente.
     </text>
     <text>
       <arrow_right/><b>backend.rules.xml: </b>configuración de reglas de rewrite genericas para cualquier módulo que aplican solo a BackEnd. 

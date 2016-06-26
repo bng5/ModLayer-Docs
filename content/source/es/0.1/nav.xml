@@ -31,6 +31,23 @@
 			<source>/config/skin.xml</source>
 		</item>
 	</section>
+	<section label="Backend">
+		<item>
+			<label>Interfaz</label>
+			<source>/backend/interface.xml</source>
+		</item>
+		<item>
+			<label>Variables</label>
+			<source>/backend/variables.xml</source>
+		</item>
+	</section>
+	<section label="Frontend">
+		<item>
+			<label>Interfaz</label>
+			<source>/backend/interface.xml</source>
+		</item>
+	</section>
+	
 	<section label="Módulos">
 		<item>
 			<label>Intro</label>
