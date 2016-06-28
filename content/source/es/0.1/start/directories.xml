@@ -81,6 +81,9 @@
     <text>
       Dentro de este directorio, encontramos todos los recursos utilizados por el sistema. Se detalla a continuación cada una de las partes:
     </text>
+    <text>
+      <arrow_right /> <b>load.php: </b> es el archivo que se utiliza para inicializar el sistema. Y donde se define el nombre del ambiente (para tomar la configuración).
+    </text>
 
     <!-- MODLAYER/CONFIGURATION -->
     <subtitle>/modlayer/configuration</subtitle>
