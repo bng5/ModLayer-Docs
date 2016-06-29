@@ -149,9 +149,9 @@ nav {
 	z-index:999;
 }
 nav .block {margin:0 0 20px 0;}
-nav .block h2 {color:#656565;font-size:19px;margin-bottom:0;}
+nav .block h2 {color:#656565;font-size:21px;margin-bottom:5px;}
 nav ul {list-style:none;background:none;}
-nav ul li {font-family:'source_sans_proregular';line-height:20px;}
+nav ul li {font-family:'source_sans_proregular';line-height:20px;padding:0 0 5px 0;}
 nav ul li a.active {color:#000;}
 
 .pageview {
@@ -192,6 +192,12 @@ p.message {
 	padding:10px;
 	border-radius:5px;
 }
+
+p.box .mono {
+	background:#335577;
+	color:#fff;
+}
+
 p.message .mono {
 	background:transparent;
 	border:0;
@@ -227,8 +233,12 @@ pre.prettyprint {
 	word-break: break-all;
 }
 
-
-
+.colored {
+	padding:10px;
+	background:#f5f5f5;
+	border-radius:5px;
+	margin:0 0 20px 0;
+}
 
 footer {border-top:1px solid #e0e0e0;padding:20px;}
 
@@ -334,41 +344,6 @@ table.parameters .name span {color:#333;font-size:17px;}
 .btn:visited {color:#fff;}
 
 
-.image-caption {
-	margin:20px 0;
-
-}
-.image-caption img {
-	display:block;
-	border:1px solid #e0e0e0;
-	max-width:100%;
-}
-.image-caption span {
-	display:block;
-	padding:10px 0;	
-	font-size:13px;
-	color:#888;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media (max-width: 760px) {
 
 	#page, #top, footer {
@@ -409,7 +384,7 @@ table.parameters .name span {color:#333;font-size:17px;}
 	}
 	#top .logo {display:none;}
 
-
+	img.example {width:100%;}
 }
 
 

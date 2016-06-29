@@ -13,6 +13,10 @@
 			<source>/start/directories.xml</source>
 		</item>
 		<item>
+			<label>Bucket</label>
+			<source>/start/bucket.xml</source>
+		</item>
+		<item>
 			<label>Templates</label>
 			<source>/start/template.xml</source>
 		</item>

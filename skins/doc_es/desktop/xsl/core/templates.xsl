@@ -22,11 +22,8 @@
 
 <xsl:template match="item" mode="nav">
 	<li>
-		<xsl:variable name="itemUrl">
-			<xsl:call-template name="item.url" />
-		</xsl:variable>
-		<a href="{source}">
-			<xsl:if test="$page_url = source">
+		<a href="{$appUrl}{source}">
+			<xsl:if test="substring-after($page_url, concat('/', $config/system/domain/@subdir)) = source">
 				<xsl:attribute name="class">active</xsl:attribute>
 			</xsl:if>
 			<xsl:if test="target != ''">
@@ -38,7 +35,7 @@
 </xsl:template>
 
 <xsl:template name="item.url">
-	<xsl:value-of select="$config/system/domain" />/<xsl:value-of select="name(../../*)" />/<xsl:value-of select="."  />
+	<xsl:value-of select="$appUrl" />/<xsl:value-of select="name(../../*)" />/<xsl:value-of select="."  />
 </xsl:template>
 <!-- Menu -->
 
@@ -66,7 +63,7 @@
 	</h3>
 </xsl:template>
 
-<xsl:template match="method[text()]|inner-title[text()]">
+<xsl:template match="method[text()]">
 	<xsl:variable name="thisTxt">
 		<xsl:call-template name="normalize.text">
 			<xsl:with-param name="string" select="."/>
@@ -83,6 +80,13 @@
 		<xsl:apply-templates select="@*" mode="atts" />
 		<xsl:apply-templates />
 	</p>
+</xsl:template>
+
+<xsl:template match="block">
+	<div class="colored">
+		<xsl:apply-templates select="@*" mode="atts" />
+		<xsl:apply-templates />
+	</div>
 </xsl:template>
 
 <xsl:template match="message">
@@ -108,6 +112,14 @@
 	</pre>
 </xsl:template>
 
+<xsl:template match="domain" mode="code">
+	<xsl:value-of select="$config/system/domain"/>
+</xsl:template>
+
+<xsl:template match="appUrl" mode="code">
+	<xsl:value-of select="$appUrl"/>
+</xsl:template>
+
 <xsl:template match="*" mode="code"><!-- 
  -->&lt;<xsl:value-of select="name()" /><!-- 
 	 --><xsl:apply-templates select="@*" mode="code" /><!-- 
@@ -124,7 +136,21 @@
 </xsl:template>
 
 <xsl:template match="@*" mode="code"><!-- 
-	 -->&#xa0;<xsl:value-of select="name()" />="<xsl:value-of select="." />"<!-- 
+	 -->&#xa0;<xsl:value-of select="name()" />="<xsl:choose>
+			<xsl:when test="contains(., '[appUrl]')"><!-- 
+				 --><xsl:value-of select="substring-before(., '[appUrl]')"/><!-- 
+				 --><xsl:value-of select="$appUrl"/><!-- 
+				 --><xsl:value-of select="substring-after(., '[appUrl]')"/><!-- 
+			 --></xsl:when>
+			 <xsl:when test="contains(., '[domain]')"><!-- 
+				 --><xsl:value-of select="substring-before(., '[domain]')"/><!-- 
+				 --><xsl:value-of select="$config/system/domain"/><!-- 
+				 --><xsl:value-of select="substring-after(., '[domain]')"/><!-- 
+			 --></xsl:when>
+			<xsl:otherwise>
+				<xsl:apply-templates select="." />		
+			</xsl:otherwise>
+		</xsl:choose>"<!-- 
  --></xsl:template>
 
 
@@ -134,6 +160,7 @@
 
 <xsl:template match="mono">
 	<span class="mono">
+		<xsl:apply-templates select="@*" mode="atts" />
 		<xsl:apply-templates />
 	</span>
 </xsl:template>
@@ -230,14 +257,6 @@
 </xsl:template>
 
 
-<xsl:template match="image">
-	<div class="image-caption">
-		<img src="{./source}" alt="" />
-		<span><xsl:apply-templates select="caption" /></span>
-	</div>
-</xsl:template>
-
-
 <xsl:template match="html">
 	<xsl:apply-templates />
 </xsl:template>
@@ -246,6 +265,47 @@
 <!-- Templates de content xml  -->
 
 
+
+<xsl:template name="share.box">
+<div class="share">
+	<span class="tw-btn">
+		<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal"  data-lang="es">Tweet</a> <!-- data-via="LivePassArg" -->
+		<script type="text/javascript" src="http://platform.twitter.com/widgets.js">&#xa0;</script>
+	</span>
+	<span class="fb-btn">
+		 <div id="fb-root">&#xa0;</div><!-- 
+		 --><script type="text/javascript"><!-- 
+			 -->(function(d, s, id) {<!-- 
+					-->var js, fjs = d.getElementsByTagName(s)[0];<!-- 
+					-->if (d.getElementById(id)) return;<!-- 
+					-->js = d.createElement(s); js.id = id;<!-- 
+					-->js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";<!-- 
+					-->fjs.parentNode.insertBefore(js, fjs);<!-- 
+				-->}<!-- 
+				-->(document, 'script', 'facebook-jssdk'));<!-- 
+			--></script>
+		 <div class="fb-like" data-send="false" data-layout="button_count" data-width="110" data-show-faces="true" data-font="arial">&#xa0;</div>
+		<!-- <a name="fb_share">&#xa0;</a>
+		<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script> -->
+		<!-- <div id="fb-root">&#xa0;</div>
+		<script src="http://connect.facebook.net/en_US/all.js#appId=174719735922838&amp;xfbml=1">&#xa0;</script>
+		<fb:like send="false" layout="button_count" width="100" show_faces="false" font="lucida grande">&#xa0;</fb:like> -->
+	</span>
+	<span class="gp-btn">
+		<!-- Place this tag where you want the +1 button to render -->
+		<g:plusone size="medium">&#xa0;</g:plusone>
+	</span>
+	<!-- Place this render call where appropriate -->
+	<script type="text/javascript">
+	  window.___gcfg = {lang: 'es-419'};
+	  (function() {
+	    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+	    po.src = 'https://apis.google.com/js/plusone.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	  })();
+	</script>
+</div>
+</xsl:template>
 
 
 <!--TEMPLATES DE HTML-->
@@ -392,7 +452,23 @@
 </xsl:template>
 
 <xsl:template match="@*" mode="atts">
-	<xsl:attribute name="{name()}"><xsl:value-of select="." /></xsl:attribute>
+	<xsl:attribute name="{name()}">
+		<xsl:choose>
+			<xsl:when test="contains(., '[appUrl]')"><!-- 
+				 --><xsl:value-of select="substring-before(., '[appUrl]')"/><!-- 
+				 --><xsl:value-of select="$appUrl"/><!-- 
+				 --><xsl:value-of select="substring-after(., '[appUrl]')"/><!-- 
+			 --></xsl:when>
+			 <xsl:when test="contains(., '[domain]')"><!-- 
+				 --><xsl:value-of select="substring-before(., '[domain]')"/><!-- 
+				 --><xsl:value-of select="$config/system/domain"/><!-- 
+				 --><xsl:value-of select="substring-after(., '[domain]')"/><!-- 
+			 --></xsl:when>
+			<xsl:otherwise>
+				<xsl:apply-templates select="." />		
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:attribute>
 </xsl:template>
 
 <xsl:template match="text()">

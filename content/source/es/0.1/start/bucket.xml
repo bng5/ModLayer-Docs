@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+  <page>
+    <title>Bucket de Imágenes</title>
+
+    <subtitle>¿Qué es?</subtitle>
+    <text>
+      Este servicio está pensado para optimizar el consumo de los archivos físicos de imágenes previamente subidas al sistem. Permitiendo obtener la imagen en distintos tamaños y compresiones según las necesidades puntuales de cada implementación.
+    </text>
+    <text>
+      Cada pedido es servido directamente por el webserver, al ser archivo estáticos, a menos que ese archivo solicitado no exista en disco. En ese caso se procesa el pedido a través del servicio el cual termina generando el archivo físico una sola vez para que luego pueda seguir siendo servido estáticamente por el webserver.
+    </text>
+    <text>
+      Además de generar distintos tamaños, tambien se pueden definir un par de parámetros extra en el pedido para determinar si se requiere un corte de la imágen o alguna compresión particular. 
+    </text>
+
+
+    <method>Como utilizar las imagenes</method>
+
+    <text>
+      El llamado a las imagenes se debe realizar a la url proporcionada previamente en cualquier respuesta de api, utilizando como nombre de archivo un string concatenando el <mono>id</mono> de la imagen, los <mono>parámetros</mono> y la <mono>extensión</mono>. 
+    </text>
+    <text>
+      De la siguiente manera (ejemplo con todos los parámetros):
+      <br/>
+      <domain />/<mono>{path}</mono>/<mono>{id}</mono>w<mono>{width}</mono>h<mono>{height}</mono>q<mono>{quality}</mono><mono>{crop}</mono>.<mono>{extension}</mono>
+    </text>
+
+    <subtitle>Corte</subtitle>
+    <text>
+      Para especificar que se desea una imagen en las medidas exactas solicitadas, necesario especificarlo con una <b>"c"</b> al final de los parametros. Caso contrario, las medidas recibidas se toman como límites y se hace un redimensionamiento en proporcion a la imagen original.
+    </text>
+    <text style="text-align:center;">
+      <img src="[appUrl]/content/images/bucket/size.jpg" alt="" class="example" />
+    </text>
+
+    <subtitle>Calidad</subtitle>
+    <text>
+      El valor de compresión es un rango de 0 a 100. El valor establecido por defecto es 80. Pero se puede especificar un valor distinto. En el siguiente ejemplo vemos la misma imagen con distintos niveles de compresión.
+    </text>
+    <box>
+      <domain />/content/bucket/8/9598w650h450<b>q25</b>c.jpg
+      <br/>
+      <domain />/content/bucket/8/9598w650h450<b>q90</b>c.jpg
+    </box>
+    <text>
+      A la izquierda la imagen con calidad 25 y a la derecha imagen con calidad 90.
+    </text>
+    <text style="text-align: center;">
+      <img src="[appUrl]/content/images/bucket/example_1.jpg" alt="" class="example" />
+      <img src="[appUrl]/content/images/bucket/example_1a.jpg" alt="" class="example" />
+    </text>
+    <subtitle>Otros Ejemplos</subtitle>
+
+    <block>
+      En este ejemplo pedimos la imagen de 150 de ancho por 400 de alto, con corte.
+      <text style="text-align: center;margin:10px 0 0;">
+        <mono style="margin:0 0 10px 0;"><domain />/content/bucket/8/9598w150h400c.jpg</mono>
+        <br/>
+        <img src="[appUrl]/content/images/bucket/example_4.jpg" alt="" class="example" />
+        <br/>
+      </text>
+    </block>
+    <block>
+      En este caso pedimos la imagen de 450 de ancho y 200 de alto, con corte.
+      <text style="text-align: center;margin:10px 0 0;">
+        <mono style="margin:0 0 10px 0;"><domain />/content/bucket/8/9598w450h200c.jpg</mono>
+        <br/>
+        <img src="[appUrl]/content/images/bucket/example_2.jpg" alt="" class="example" />
+      </text>
+    </block>
+    <block>
+      El mismo pedido de 450 de ancho y 200 de alto pero sin corte. Notar que se elimina la "c" antes de la extensión. 
+      <br/>
+      En este caso, se toman los parámetros <i>ancho</i> y <i>alto</i> como límites, redimensionando la imagen en proporción a la original.
+      <text style="text-align: center;margin:10px 0;">
+        <mono style="margin:0 0 10px 0;"><domain />/content/bucket/8/9598w450h200.jpg</mono>
+        <br/>
+        <img src="[appUrl]/content/images/bucket/example_3.jpg" alt="" class="example" />
+        <br/>
+      </text>
+      La imagen sin corte según los parametros recibidos termina siendo de 300 x 200.
+      <br/>
+      La imagen orginal es de 960 x 640. 
+    </block>
+
+    
+
+    
+    <divider />
+    
+
+
+    <subtitle>Parámetros</subtitle>
+    <parameters>
+      <param>
+        <name>w</name>
+        <type>Integer</type>
+        <required>No</required>
+        <desc>Ancho deseado para la imagen</desc>
+      </param>
+      <param>
+        <name>h</name>
+        <type>Integer</type>
+        <required>No</required>
+        <desc>Alto deseado de la imagen</desc>
+      </param>
+      <param>
+        <name>q</name>
+        <type>Integer</type>
+        <required>No</required>
+        <desc>Calidad de compresion. Rango de valor permitido: 0 a 100. Valor por defecto: 80.</desc>
+      </param>
+    </parameters>
+   
+    <text>
+      La url para utilizar el servicio viene incluida con cualquier imagen <b>en todas</b> las respuestas de la api dentro del nodo <mono>bucket</mono>.
+      <br/>
+      Ej. (respuesta de un listado):
+    </text>
+<code>
+<multimedias>
+  <images>
+    <image image_id="9556" type_id="1" type="jpg" weight="63618" parent="0" state="0" created_at="2015-11-05 19:38:43" created_by="-1" created_type="system" updated_at="0000-00-00 00:00:00" updated_by="0" updated_type="" width="1920" height="1080">
+      <relation_order>0</relation_order>
+      <external_id>0</external_id>
+      <external_type></external_type>
+      <title>Alternativa Teatral TV #30: El stand up desde adentro</title>
+      <summary/>
+      <bucket><domain/>/content/bucket/6/</bucket>
+    </image>
+  </images>
+</multimedias>
+</code>
+
+    
+  </page>
+</xml>

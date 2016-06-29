@@ -14,7 +14,7 @@
 			 --><xsl:value-of select="$config/system/domain" />/<xsl:value-of select="$config/system/domain/@subdir" /><!-- 
 		 --></xsl:when><!-- 
 		 --><xsl:otherwise><!-- 
-			 --><xsl:value-of select="substring($config/system/domain, 0, string-length($config/system/domain))" /><!-- 
+			 --><xsl:value-of select="$config/system/domain" /><!-- 
 		 --></xsl:otherwise><!-- 
 	 --></xsl:choose><!-- 
  --></xsl:variable>
