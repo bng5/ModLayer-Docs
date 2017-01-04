@@ -110,23 +110,37 @@ class Application {
 	/*
 		Send Email
 	*/
-	private static function SendEmail($address, $html, $subject, $rtte=false)
+	public static function SendEmail($address, $html, $subject)
 	{
-		$tcpNode = Configuration::Query('/configuration/smtp');
-		$server  = $tcpNode->item(0)->nodeValue;
+		
 
 		$mail = new PHPMailer(true);
+		$mail->IsSMTP(); // telling the class to use SMTP
+		
 		try {
-			$mail->Host       = $server; // SMTP server
-			$mail->Port       = 25;      // set the SMTP port for the GMAIL server
-			$mail->AddAddress($address);
+			$mail->Host = Configuration::Query("/configuration/smtp/host")->item(0)->nodeValue; // SMTP server
+			$mail->Port = Configuration::Query("/configuration/smtp/port")->item(0)->nodeValue; // Set the SMTP port
+			$mail->SMTPAuth = true;
+			$mail->CharSet  = 'UTF-8';
+			$mail->Username = Configuration::Query("/configuration/smtp/user")->item(0)->nodeValue;
+			$mail->Password = Configuration::Query("/configuration/smtp/pass")->item(0)->nodeValue;
 
-			$rtte = ($rtte !== false) ? $rtte . ' ' : '';
-			$rtte .= Configuration::GetSenderName();
+	
+			if(is_array($address)) {
+				foreach($address as $recipient) {
+					$mail->AddAddress($recipient);
+				}
+			}
+			else {
+				$mail->AddAddress($address);
+			}
 
-			$mail->SetFrom(Configuration::GetSender(), utf8_decode($rtte));
+
+			$from = Configuration::Query("/configuration/smtp/from")->item(0);
+			$mail->SetFrom($from->nodeValue, $from->getAttribute('name'));
 			$mail->Subject = $subject;
-			$mail->MsgHTML(utf8_decode($html));
+
+			$mail->MsgHTML($html);
 			$mail->Send();
 		}
 		catch (Exception $e)

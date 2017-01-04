@@ -58,12 +58,12 @@ class Skin
 			
 			/* We should have one default skin */
 			if(!$default) 
-				Error::Alert('Default Skin is not defined.');
+				MLError::Alert('Default Skin is not defined.');
 
 			/* Default skin should have the language defined */
 			$lang = $default->item(0)->getAttribute('lang');
 			if(empty($lang))
-				Error::Alert('Default Skin does not have a language defined.');
+				MLError::Alert('Default Skin does not have a language defined.');
 			
 			Session::Set('lang', $lang);
 		}
@@ -74,7 +74,7 @@ class Skin
 		/* If there is not a skin for the language stored, something is really wrong */
 		if(!$skin){
 			Session::Destroy('lang');	
-			Error::Alert('Could not load the skin for language "' . $lang . '".');
+			MLError::Alert('Could not load the skin for language "' . $lang . '".');
 		}
 
 		$default = $skin->item(0)->nodeValue;
@@ -313,7 +313,7 @@ class Skin
 	*/
 	public static function DisplayInternalError($message, $backTrace, $fileName, $lineNumber, $htmlMode=true)
 	{
-		$xsl = ($htmlMode) ? 'error.xsl' : 'error.xsl';
+		$xsl = 'error.xsl';
 		libxml_clear_errors();
 
 		$xslpath = PathManager::GetApplicationPath() . '/modlayer/error/' . $xsl;
@@ -335,8 +335,10 @@ class Skin
 		$thisTemplate->setparam("page_url",$request);
 		$thisTemplate->setparam('message', $message);
 
-		// Util::debug($backTrace);
-		// die;
+		/* Not sensitive system configuration */
+		$conf = Configuration::Query("/configuration/*[not(*)]");
+		$thisTemplate->setconfig($conf, null, 'system');
+
 		$thisTemplate->setcontent($_SERVER, null, 'server');
 		$thisTemplate->setcontent($backTrace, null, 'backtrace');
 		$thisTemplate->setconfig($thisTemplate->client->GetDetails(), null, 'client');
@@ -344,15 +346,16 @@ class Skin
 
 		$thisTemplate->setparam("error", '500-100');
 
+		
 		return $thisTemplate->returnDisplay();
 	}
 
 	public static function FrontDisplayNotFound()
 	{
 		$interface = Skin::Load();
+		$interface->Status(404);
 		$interface->setparam("error", '404');
 		$interface->add("core/error.xsl");
-		header("Status: 404 Not Found");
 		$interface->display();
 	}
 	
@@ -364,9 +367,9 @@ class Skin
 		libxml_clear_errors();
 	
 		$interface = Skin::Load($baseXsl=false, $forceSkin=false, $forceDevice=false, $loadExtra=false);
+		$interface->Status(500);
 		$interface->add("core/error.xsl");
 		$interface->setparam("error", '500-100');
-		header('Status: 503 Service Temporarily Unavailable');
 		$interface->display();
 	}
 
@@ -487,28 +490,6 @@ class Skin
 		header('Location: ' . $redirect);
 	}
 
-	/**
-	*	Deferred Publication
-	*	
-	*	@return void
-	*/
-	public static function deferredPublication()
-	{
-		$modules  = Configuration::Query('/configuration/modules/module');
-
-		foreach($modules as $module)
-		{
-			if(method_exists($module->getAttribute('controller'),'PublishContent'))
-			{	
-				$moduleController = $module->getAttribute('controller');
-
-				// Pregunta si el modulo no hereda de Element para no hacer tantas consultas a la base
-				if (!is_subclass_of($moduleController, 'ElementController'))
-					$moduleController::PublishContent();
-			}
-		}
-
-		die;
-	}
+	
 }
 ?>

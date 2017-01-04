@@ -71,11 +71,14 @@ class Util {
 		die;
 	}
 	
+	/**
+	*	@deprecated in newer versions.
+	*	Try to use specific method for each resource 
+	* 	(PostPara, GetParam, RuleParam)
+	*/
 	public static function getvalue($name, $default = false)
 	{
-		/*
-			Always Return first the param from GET or POST 
-		*/
+		/*  Always Return first the param from GET or POST  */
 
 		/* Return post parameter */
 		if(isset($_POST[$name])) return $_POST[$name];
@@ -100,22 +103,49 @@ class Util {
 	public static function SearchArrayByKey($array, $key)
 	{
 		$results = array();
-
-		if (is_array($array))
-		{
+		if (is_array($array)) {
 			if (isset($array[$key]))
 				$results[] = $array[$key];
 
 			foreach ($array as $sub_array)
 				$results = array_merge($results, Util::SearchArrayByKey($sub_array, $key));
 		}
-
 		return  $results;
 	}
 
-	public static function getPost($name,$default=false)
+	/**
+	*	PostParam Return $_POST Param for a given key name
+	*	@param $name : string, name of the param
+	*	@param $default : string, default value to return if the requested param is not present.
+	*	@return string
+	*/
+	public static function PostParam($name,$default=false)
 	{
 		return (isset($_POST[$name])) ? $_POST[$name] : $default;
+	}
+
+	/**
+	*	GetParam Return $_GET Param for a given key name
+	*	@param $name : string, name of the param
+	*	@param $default : string, default value to return if the requested param is not present.
+	*	@return string
+	*/
+	public static function GetParam($name,$default=false)
+	{
+		return (isset($_GET[$name])) ? $_GET[$name] : $default;
+	}
+
+	/**
+	*	RuleParam Return a Rule matched Param for a given key name
+	*	@param $name : string, name of the param
+	*	@param $default : string, default value to return if the requested param is not present.
+	*	@return string
+	*/
+	public static function RuleParam($name,$default=false)
+	{
+		$trace  = debug_backtrace();
+		$search = self::SearchArrayByKey($trace, $name);
+		return (isset($search[0])) ? $search[0] : $default;
 	}
 	
 	public static function extend($defaults,$options)
@@ -234,7 +264,7 @@ class Util {
 
 		// -- Returns the slug
 		$slug = strtolower(strtr($string, $table));
-
+		$slug = str_replace('--', '-', $slug);
 		if($limit) 
 			$slug = substr($slug,0,$limit);
 
@@ -291,9 +321,78 @@ class Util {
 		die;
 	}
 
-	public static function DirectorySeparator($path)
+	public static function DirectorySeparator($path, $flag=false)
 	{
-		return preg_replace('#(\/|\\\)#', DIRECTORY_SEPARATOR, $path);
+		$separator = (!$flag) ? DIRECTORY_SEPARATOR : '/'; 
+		$path = str_replace('//', '/', $path);
+		$path = str_replace('\\\\', '\\', $path);
+		return preg_replace('#(\/|\\\)#', $separator, $path);
+	}
+
+	public static function FileUploadMaxSize() {
+		static $max_size = -1;
+
+		if ($max_size < 0) {
+			// Start with post_max_size.
+			$max_size = self::parseSize(ini_get('post_max_size'));
+
+			// If upload_max_size is less, then reduce. Except if upload_max_size is
+			// zero, which indicates no limit.
+			$upload_max = self::parseSize(ini_get('upload_max_filesize'));
+			if ($upload_max > 0 && $upload_max < $max_size) {
+			  $max_size = $upload_max;
+			}
+		}
+		return array(
+			'maxsize' => ini_get('post_max_size'),
+			'maxsize_bytes' => $max_size
+		);
+	}
+
+	public static function parseSize($size) {
+		$unit = preg_replace('/[^bkmgtpezy]/i', '', $size); // Remove the non-unit characters from the size.
+		$size = preg_replace('/[^0-9\.]/', '', $size); // Remove the non-numeric characters from the size.
+		if ($unit) {
+			// Find the position of the unit in the ordered string which is the power of magnitude to multiply a kilobyte by.
+			return round($size * pow(1024, stripos('bkmgtpezy', $unit[0])));
+		}
+		else {
+			return round($size);
+		}
+	}
+
+	/**
+	 * Validate a date
+	 *
+	 * @param string $format e.g. 'Y-m-d H:i:s'
+	 * @param string $date   e.g. '2015-08-20 18:00:00'
+	 * @return boolean
+	 */
+	public static function validateDate($format, $date)
+	{
+		$date = DateTime::createFromFormat($format, $date);
+		
+		return (gettype($date) == 'object') ? true : false;
+	}
+
+	/**
+	 * HtmlToXML
+	 * Recibe un string html (con nodos que no cierran validos en html) y lo devuelve en XML bien formado.
+	 * @param string $str
+	 * @return string
+	 */
+	public static function HtmlToXML($str)
+	{
+		$doc = new XMLDom();
+		$doc->loadHTML($str);
+		$doc->formatOutput = false;
+
+		$body = $doc->documentElement->firstChild;
+		$postxml = utf8_decode($doc->saveXML($body));
+		$postxml = str_replace('<body>', '', $postxml);
+		$postxml = str_replace('</body>', '', $postxml);
+
+		return $postxml;
 	}
 }
 ?>

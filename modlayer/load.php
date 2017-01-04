@@ -31,8 +31,8 @@ Configuration::LoadConfiguration();
 /**
 *	We will handle Errors
 */
-set_error_handler(array('Error', 'ErrorHandler'));
-set_exception_handler(array('Error', 'ExceptionHandler'));
+set_error_handler(array('MLError', 'ErrorHandler'));
+set_exception_handler(array('MLError', 'ExceptionHandler'));
 
 /**
 *	default timezone should be in configuration

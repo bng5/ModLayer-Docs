@@ -22,11 +22,9 @@ Class FrontEnd {
 
 	public static function DisplayResource()
 	{
-		$url    = Util::RuleParam('url');
+		$url    = Util::getvalue('url');
 
 		$url = $url . '.xml';
-
-		
 		self::DisplayPage($url);
 	}
 

@@ -3,7 +3,7 @@
 Class Rewrite
 {
 
-	public static function parseURL()
+	public static function ParseURL()
 	{
 		$rules = Configuration::Query('/configuration/rewrite/frontend/rule');
 		if($rules)
@@ -30,7 +30,7 @@ Class Rewrite
 			$subject = str_replace('/' . $subdir->item(0)->nodeValue, '', $subject); 
 		}
 
-		Util::redirect(rtrim($domain, '/') . '/not-found/404/?'.$subject);
+		Skin::FrontDisplayNotFound();
 	}
 
 	public static function MatchRule($rule, $controller)
@@ -44,13 +44,10 @@ Class Rewrite
 		if($subdir && $subdir->item(0)->nodeValue != '')
 		{
 			$rulematch = '^\/' . $subdir->item(0)->nodeValue . $rulematch;
-			// echo $rulematch;
-			// die;
 		}
 		else{
 			$rulematch = '^' . $rulematch;
 		}
-
 
 		$pattern = '#'.$rulematch.'#';
 		$replace = ($rule->getAttribute('args')!='') ? $rule->getAttribute('args') : false;
@@ -63,16 +60,31 @@ Class Rewrite
 			{
 				$args = preg_replace($pattern, $replace, $subject);
 				$args = str_replace('?','',$args);
+				// $args = str_replace('/','',$args);
 				$args = explode('&', $args);
 
-				$namedArgs = array();
+				$namedArgs = array('rewrite_args');
 				foreach($args as $argument)
 				{
 					$thisArg = explode('=', $argument);
 					if(isset($thisArg[0]) && isset($thisArg[1])){
-						$namedArgs[$thisArg[0]] = $thisArg[1];
+						$namedArgs['rewrite_args'][$thisArg[0]] = $thisArg[1];
 					}
 				}
+
+
+				// $args = preg_replace($pattern, $replace, $subject);
+				// $args = str_replace('?','',$args);
+				// $args = explode('&', $args);
+
+				// $namedArgs = array();
+				// foreach($args as $argument)
+				// {
+				// 	$thisArg = explode('=', $argument);
+				// 	if(isset($thisArg[0]) && isset($thisArg[1])){
+				// 		$namedArgs[$thisArg[0]] = $thisArg[1];
+				// 	}
+				// }
 				call_user_func_array(array((string)$controller,(string)$method), $namedArgs);
 			}else{
 				call_user_func(array((string)$controller,(string)$method));
