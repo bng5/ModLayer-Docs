@@ -343,6 +343,21 @@ table.parameters .name span {color:#333;font-size:17px;}
 
 .btn:visited {color:#fff;}
 
+.image-caption {
+	margin:20px 0;
+
+}
+.image-caption img {
+	display:block;
+	border:1px solid #e0e0e0;
+	max-width:100%;
+}
+.image-caption span {
+	display:block;
+	padding:10px 0;	
+	font-size:13px;
+	color:#888;
+}
 
 @media (max-width: 760px) {
 

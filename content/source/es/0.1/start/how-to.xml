@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+  <page>
+    <title>Documentación ModLayer</title>
+
+    <subtitle>Introducción</subtitle>
+    <text>
+      En esta documentación se describen los recursos disponibles para documentar el framework.
+    </text>
+    <divider />
+
+    <subtitle>¿Como Documentar?</subtitle>
+    <text>
+      Este micrositio está basado completamente en archivos <mono>XML</mono> que se utilizan como fuente de datos separando completamente el contenido de la interfaz visual, simplificando la tarea y permitiendo enfocarse exclusivamente en lo que se quiere explicar / ejemplificar.
+    </text>
+    <text>
+      Para ayudar a describir mejor cada tema o ejemplo, se deberán utilizar nodos xmls predefinidos, que se detallan en esta pagina.
+    </text>
+
+    <subtitle>Rutas y Navegación</subtitle>
+    <text>
+      Los archivos <mono>XML</mono> estan ubicados en un directorio particular, que es donde la aplicación busca el contenido. Este directorio principal de contenido se encuentra en:
+    </text>
+    <box>
+      [doc_app_path]/content/source/
+    </box>
+    <text>
+      Donde <mono>[doc_app_path]</mono> es la ruta de la app de documentación. 
+      <br/>
+      Dentro de ese directorio, se pueden crear subdirectorios o la estructura que se desee.
+    </text>
+
+    <text>
+      La pagina principal que se visualiza es el archivo <mono>home.xml</mono> que se encuentra en el directorio descripto arriba.
+      <br/>
+      El acceso al resto del contenido, se maneja a traves del archivo <mono>nav.xml</mono>, en el mismo directorio, y que es el que se usa de fuente para la navegación lateral izquierda.
+    </text>
+
+    <text>
+      La navegacion no es automática, es decir que si crea un archivo nuevo para que esté accesible se deberá incluir en la navegación lateral.
+      <br/>
+      Dentro del archivo <mono>nav.xml</mono> se pueden definir <strong>secciones</strong>, las cuales contendran <strong>items</strong>.
+    </text>
+<code>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+<nav version="0.1">
+  <section label="General">
+    <item>
+      <label>Inicio</label>
+      <source>/</source>
+    </item>
+    <item>
+      <label>Pedidos</label>
+      <source>/general/pedidos.xml</source>
+    </item>
+    <item>
+      <label>Respuestas</label>
+      <source>/general/respuestas.xml</source>
+    </item>
+  </section>
+</nav></code>
+
+    <text>
+      Cada <mono>item</mono> contiene un nodo <mono>label</mono> que será el texto visible en la navegación y un nodo <mono>source</mono> que será el link del texto y es la ruta del archivo que queremos mostrar, dentro del directorio principal de contenido (descripto mas arriba).
+    </text>
+
+    <divider/>
+
+    <subtitle>Estructura</subtitle>
+    <text>
+      Cada <mono>XML</mono> deberá respetar la estructura base, que es la siguiente:
+    </text>
+    <code>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+<xml>
+  <page>
+    <!-- Contenido de la pagina que se muestra -->
+  </page>
+</xml>
+</code>
+    <text>
+      Para evitar problemas de lenguaje con caracteres especiales como "ñ", tildes (á, é, í, ó, ú) o ü, todos los archivos deberán ser guardados <strong> siempre</strong> con el encoding <mono>UTF-8</mono> y en la declaración del xml también deberán respetar este encoding.<br/>
+      Lo que se renderiza en pantalla, va a ser siempre lo que se encuentre dentro del nodo <mono>page</mono>.
+    </text>
+
+    <method>Nodos Predefinidos</method>
+
+  </page>
+</xml>

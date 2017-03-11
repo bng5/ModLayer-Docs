@@ -8,7 +8,7 @@
     </text>
     <list>
       <item><mono>Apache</mono> con el módulo mod_rewrite activo.</item>
-      <item><mono>PHP >= 5.5</mono></item>
+      <item><mono>PHP >= 5.6</mono></item>
       <item><mono>MySQL</mono> (en caso de usar backend)</item>
     </list>
     <text>

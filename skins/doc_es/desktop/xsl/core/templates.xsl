@@ -261,6 +261,12 @@
 	<xsl:apply-templates />
 </xsl:template>
 
+<xsl:template match="image">
+	<div class="image-caption">
+		<img src="{./source}" alt="" />
+		<span><xsl:apply-templates select="caption" /></span>
+	</div>
+</xsl:template>
 
 <!-- Templates de content xml  -->
 
