@@ -5,6 +5,10 @@
 			<source>/start/how-to.xml</source>
 		</item>
 		<item>
+			<label>Recursos gráficos</label>
+			<source>/start/resources.xml</source>
+		</item>
+		<item>
 			<label>Requerimientos</label>
 			<source>/start/requirements.xml</source>
 		</item>

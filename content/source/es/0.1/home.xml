@@ -3,21 +3,21 @@
   <page>
     <title>Modlayer Doc</title>
 
-    <subtitle>Introducción</subtitle>
+    <subtitle>Bienvenido!</subtitle>
     <text>
-      Documentacion de Modlayer
+      Este sitio contiene la documentacion oficial de Modlayer Doc. Para recorrer las diferentes secciones puede utilizar el panel de navegacion lateral que se encuentra a la izquierda.
     </text>
 
     <divider />
 
-    <subtitle>URL del servicio</subtitle>
-    <box>
-      <a href="http://shakespeare.alternativateatral.com/api/" target="_blank">http://shakespeare.alternativateatral.com/api/</a>
-    </box>
-    <subtitle>APIKey</subtitle>
-    <box>
-      3221406e7168796e6a75607260245b657a6b797363692d4a70622162617844
-    </box>
-    <divider />
+    <!-- <subtitle>Contacto</subtitle>
+    <text>
+      Para consultas, dudas, sugerencias puede utilizar las vías de contacto disponibles.
+      <br/>
+      <mono>contacto@float.la</mono>
+      <br/>
+      <mono>www.floatla.com</mono>
+    </text> -->
+
   </page>
 </xml>

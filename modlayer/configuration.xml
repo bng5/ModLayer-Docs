@@ -38,7 +38,7 @@
 				 args="url=home"
 			/>
 			<rule
-				 match="\/(.*)\.xml(.*)"
+				 match="\/(.*)\.(xml|html)(.*)"
 				 apply="DisplayResource"
 				 args="url=$1&amp;%{QUERY_STRING}"
 			/>

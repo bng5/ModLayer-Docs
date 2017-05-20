@@ -26,12 +26,17 @@
       Ejemplo:
     </text>
 <code>
-{
-    "call" : "Venue.GetContent",
-    "pageSize"    : 5,
-    "currentPage" : 1,
-    "startdate"   : "2016-01-01",
-    "enddate"     : "2016-25-01"
+$var = new Company();
+$item = $var->item();
+
+if( 1 &lt; 0) {
+// Aca no hago nada
+
+    $skin->setcontext(
+      $nav, 
+      '/nav', 
+      null
+    );
 }
 </code>
 

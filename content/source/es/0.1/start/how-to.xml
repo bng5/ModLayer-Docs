@@ -2,14 +2,14 @@
 <xml>
   <page>
     <title>Documentación ModLayer</title>
-
     <subtitle>Introducción</subtitle>
     <text>
       En esta documentación se describen los recursos disponibles para documentar el framework.
     </text>
     <divider />
-
+    
     <subtitle>¿Como Documentar?</subtitle>
+
     <text>
       Este micrositio está basado completamente en archivos <mono>XML</mono> que se utilizan como fuente de datos separando completamente el contenido de la interfaz visual, simplificando la tarea y permitiendo enfocarse exclusivamente en lo que se quiere explicar / ejemplificar.
     </text>
