@@ -165,6 +165,12 @@
 	</span>
 </xsl:template>
 
+<xsl:template match="node">
+	<span class="node">
+		&lt;<xsl:apply-templates />&gt;
+	</span>
+</xsl:template>
+
 <xsl:template match="arrow_right">
 	<span class="arrow-right">&#xa0;</span>
 </xsl:template>

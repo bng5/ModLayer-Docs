@@ -14,32 +14,39 @@
       Este micrositio está basado completamente en archivos <mono>XML</mono> que se utilizan como fuente de datos separando completamente el contenido de la interfaz visual, simplificando la tarea y permitiendo enfocarse exclusivamente en lo que se quiere explicar / ejemplificar.
     </text>
     <text>
-      Para ayudar a describir mejor cada tema o ejemplo, se deberán utilizar nodos xmls predefinidos, que se detallan en esta pagina.
+      Para ayudar a describir mejor cada tema o ejemplo, se podrán utilizar tags xmls predefinidos, que se detallan en <a href="/start/resources.xml">Recursos gráficos</a>.
     </text>
 
+    <method>Arrancando de cero</method>
     <subtitle>Rutas y Navegación</subtitle>
     <text>
-      Los archivos <mono>XML</mono> estan ubicados en un directorio particular, que es donde la aplicación busca el contenido. Este directorio principal de contenido se encuentra en:
+      Los archivos <mono>XML</mono> estan ubicados en un directorio particular de la aplicación, que es de donde se busca el contenido. Este directorio se encuentra en:
     </text>
     <box>
-      [doc_app_path]/content/source/
+      [app_path]/content/source/
     </box>
     <text>
-      Donde <mono>[doc_app_path]</mono> es la ruta de la app de documentación. 
+      Donde <mono>[app_path]</mono> es la ruta de la app de documentación. 
       <br/>
       Dentro de ese directorio, se pueden crear subdirectorios o la estructura que se desee.
     </text>
 
     <text>
-      La pagina principal que se visualiza es el archivo <mono>home.xml</mono> que se encuentra en el directorio descripto arriba.
+      La pagina principal que se visualizará es el archivo <mono>home.xml</mono> que se encuentra en ese directorio.
       <br/>
-      El acceso al resto del contenido, se maneja a traves del archivo <mono>nav.xml</mono>, en el mismo directorio, y que es el que se usa de fuente para la navegación lateral izquierda.
+      El acceso al resto del contenido, se maneja a traves del archivo <mono>nav.xml</mono>, en el mismo nivel y que es el que se usa de fuente para la navegación lateral izquierda.
     </text>
 
+    <method>Navegación</method>
     <text>
-      La navegacion no es automática, es decir que si crea un archivo nuevo para que esté accesible se deberá incluir en la navegación lateral.
+      La navegación y acceso a los archivos no es automática, es decir que para dar visibilidad a un contenido nuevo se deberá incluirlo a mano en la navegación lateral, o a traves de un link en otra página.
+    </text>
+
+    <subtitle>Estructura</subtitle>
+    <text>  
+      La estructura del <mono>XML</mono> para <mono>nav.xml</mono> es simple:
       <br/>
-      Dentro del archivo <mono>nav.xml</mono> se pueden definir <strong>secciones</strong>, las cuales contendran <strong>items</strong>.
+      Se pueden definir <strong>secciones</strong>, las cuales contendran <strong>items</strong>.
     </text>
 <code>
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
@@ -61,11 +68,16 @@
 </nav></code>
 
     <text>
-      Cada <mono>item</mono> contiene un nodo <mono>label</mono> que será el texto visible en la navegación y un nodo <mono>source</mono> que será el link del texto y es la ruta del archivo que queremos mostrar, dentro del directorio principal de contenido (descripto mas arriba).
+      Cada <node>item</node> a su vez deberá contener 2 <strong>child nodes</strong>: 
     </text>
-
+    <list>
+      <item><node>label</node> que será el texto visible</item>
+      <item><node>source</node> que es la ruta del archivo al que se apunta, partiendo desde el directorio principal de contenido (descripto mas arriba)</item>
+    </list>
     <divider/>
 
+
+    <method>Páginas</method>
     <subtitle>Estructura</subtitle>
     <text>
       Cada <mono>XML</mono> deberá respetar la estructura base, que es la siguiente:
