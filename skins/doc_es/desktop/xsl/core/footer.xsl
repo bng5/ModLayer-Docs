@@ -5,8 +5,9 @@
 
 <xsl:template name="footer">
 	<footer>
-		<div class="container floatFix">
-			<a href="http://www.float.la" target="_blank" style="font-size:13px;color:#335577;">Float.la</a>
+		<div class="container floatFix mono">
+			<div class="right">Powered by <a href="https://github.com/floatla/ModLayer-Docs" target="_new" title="Document your Project">ModLayer Lite</a></div>
+			ModLayer Docs. Created by <a href="http://www.float.la" target="_blank">Float.la</a>
 		</div>
 	</footer>
 
