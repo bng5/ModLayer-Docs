@@ -258,7 +258,7 @@
     </params>
     </code>
     <text>
-      Por defecto, los parametros <mono>title</mono>, <mono>summary</mono> y <mono>image</mono> están seteados en <mono>1</mono> con lo cual no es necesario agregarlos a la hora de crear un nuevo template. Es decir, tener el siguiente código:
+      Por defecto, los parametros <mono>title</mono>, <mono>summary</mono> e <mono>image</mono> están seteados en <mono>1</mono> con lo cual no es necesario agregarlos a la hora de crear un nuevo template. Es decir, tener el siguiente código:
     </text>
     <code>
     <params>
@@ -279,7 +279,7 @@
       </params>
     </code>
     <text>
-      La sección destinada a la configuración de parámetros que pueden ser editados encontraremos el siguiente blpoque:
+      La sección destinada a la configuración de parámetros que pueden ser editados encontraremos el siguiente bloque:
     </text>
     <code>
       <parameters>
@@ -301,7 +301,7 @@
 
     <method>Ejemplo 1</method>
     <text>
-      Supongamos que se quiere un template en cual solo se necesitan cinco posiciones. De las cinco posiciones, en solo en la posición <mono>1</mono> se podrá instanciar más de un tipo de contenido y en el resto solo artículos y clips. Solo para hacer un poco más complicado el ejemplo ;) todas las posiciones menos la <mono>1</mono> tendrán <mono>summary</mono>.
+      Supongamos que se quiere un template en cual solo se necesitan cinco posiciones. De las cinco posiciones, en solo en la posición <mono>1</mono> se podrá instanciar más de un tipo de contenido y en el resto solo artículos y clips. Solo para hacer un poco más complicado el ejemplo, todas las posiciones menos la <mono>1</mono> tendrán <mono>summary</mono>.
     </text>
     <text>El código seriá el siguiente:</text>
     <code>

@@ -16,6 +16,7 @@
       <item><a href="#Resaltado">Resaltado</a></item>
       <item><a href="#Listas">Listas</a></item>
       <item><a href="#Box">Box</a></item>
+      <item><a href="#Parameters">Parámetros</a></item>
       <item><a href="#Code">Code</a></item>
       <item><a href="#HTML">Etiquetas HTML</a></item>
     </list>
@@ -195,6 +196,64 @@ Esta es la documentación de &lt;mono&gt;Modlayer&lt;/mono&gt;
       <text>
         <box>Esta es la documentación de Modlayer</box>
       </text>
+    </div>
+
+
+
+    <!-- Parameters -->
+    <div style="background-color: #FAFAFA" id="Parameters">
+      <method>Parámetros</method>
+      <text>
+        Se puede utilizar la etiqueta <mono>parameters</mono> para generar una tabla con parámetros utilizados en alguna seccion. Cada parámetro se define con la etiqueta <mono>param</mono>, en donde se deben especificar los atributos que posee. Se utiliza la etiqueta <mono>name</mono> para indicar el nombre, el tipo con la etiqueta <mono>type</mono>, en caso de ser requerido utilizar la etiqueta <mono>required</mono> y por ultimo, la descripcion indicarla dentro de la etiqueta <mono>desc</mono>.
+      </text>
+      <text>
+        Ejemplo:
+      </text>
+<code>
+<parameters>
+  <param>
+    <name>call</name>
+    <type>String</type>
+    <required>Si</required>
+    <desc>Nombre del método a ser llamado</desc>
+  </param>
+  <param>
+    <name>currentPage</name>
+    <type>Integer</type>
+    <required>No</required>
+    <desc>Número de página a mostrar.<br/>Valor por defecto: 1</desc>
+  </param>
+  <param>
+    <name>pageSize</name>
+    <type>Integer</type>
+    <required>No</required>
+    <desc>Cantidad de ítems por página.<br/>Valor por defecto: 10</desc>
+  </param>
+</parameters>
+</code>
+      <text>
+        Resultado:
+      </text>
+      <parameters>
+        <param>
+          <name>call</name>
+          <type>String</type>
+          <required>Si</required>
+          <desc>Nombre del método a ser llamado</desc>
+        </param>
+        <param>
+          <name>currentPage</name>
+          <type>Integer</type>
+          <required>No</required>
+          <desc>Número de página a mostrar.<br/>Valor por defecto: 1</desc>
+        </param>
+        <param>
+          <name>pageSize</name>
+          <type>Integer</type>
+          <required>No</required>
+          <desc>Cantidad de ítems por página.<br/>Valor por defecto: 10</desc>
+        </param>
+      </parameters>
     </div>
 
 
