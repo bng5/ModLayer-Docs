@@ -8,7 +8,7 @@
     </text>
 
     <list>
-      <item><a href="#Titulo">Titulo</a></item>
+      <item><a href="#titulo">Titulo</a></item>
       <item><a href="#Subtitulo">Subtitulo</a></item>
       <item><a href="#Nodo">Nodo</a></item>
       <item><a href="#Divisor">Divisor</a></item>
@@ -25,25 +25,29 @@
 
 
     <!-- Titulo -->
-    <div style="background-color: #FAFAFA" id="Titulo">
-      <method>Titulo</method>
-      <text>
-        Se puede utilizar la etiqueta <mono>title</mono> para indicar que el texto ingresado es un titular.
-      </text>
-      <text>
-        Ejemplo:
-      </text>
+    <!-- <div style="background-color: #FAFAFA" id="Titulo"> -->
+    <subtitle>Título</subtitle>
+    <text>
+      Se puede utilizar la etiqueta <mono>title</mono> para indicar que el texto ingresado es un titular.
+    </text>
+    <text>
+      Ejemplo:
+    </text>
 <code>
-&lt;title&gt;Esto es un título&lt;/title&gt;
+<title>Esto es un título</title>
 </code>
-      <text>
+    <example>
+      <title>Esto es un título</title>
+    </example>
+      <!-- <text>
         Resultado:
-      </text>
-      <text>
-        <title>Esto es un titulo</title>
-      </text>
-  </div>
+      </text> -->
+      
+      
+      
+  
 
+  <divider />
 
     <!-- Subtitulo -->
     <div style="background-color: #FAFAFA" id="Subtitulo">

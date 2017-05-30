@@ -171,7 +171,8 @@ nav ul li a.active {color:#000;}
 
 
 
-p .mono {
+p .mono,
+.example .mono {
 	display:inline-block;
 	background:#f0f0f0;
 	border:1px solid #eee;
@@ -358,6 +359,25 @@ table.parameters .name span {color:#333;font-size:17px;}
 	font-size:13px;
 	color:#888;
 }
+
+.example {
+	margin:25px 0;
+	border:1px solid #e0e0e0;
+	border-left-width:20px;
+	padding:45px 15px 15px;
+	position:relative;
+}
+.example .label {
+	position:absolute;
+	top:10px;
+	left:15px;
+	font-size:11px;
+	color:#999;
+}
+
+.example h2, .example h3, .example p {margin:0;}
+
+
 
 @media (max-width: 760px) {
 

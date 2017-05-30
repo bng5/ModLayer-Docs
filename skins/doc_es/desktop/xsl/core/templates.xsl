@@ -274,6 +274,13 @@
 	</div>
 </xsl:template>
 
+
+<xsl:template match="example">
+	<div class="example">
+		<span class="label">Ejemplo de visualización</span>
+		<xsl:apply-templates />
+	</div>
+</xsl:template>
 <!-- Templates de content xml  -->
 
 
