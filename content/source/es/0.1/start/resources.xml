@@ -9,23 +9,21 @@
 
     <list>
       <item><a href="#titulo">Titulo</a></item>
-      <item><a href="#Subtitulo">Subtitulo</a></item>
-      <item><a href="#Nodo">Nodo</a></item>
-      <item><a href="#Divisor">Divisor</a></item>
-      <item><a href="#Texto">Texto</a></item>
-      <item><a href="#Resaltado">Resaltado</a></item>
-      <item><a href="#Listas">Listas</a></item>
-      <item><a href="#Box">Box</a></item>
-      <item><a href="#Parameters">Parámetros</a></item>
-      <item><a href="#Code">Code</a></item>
-      <item><a href="#HTML">Etiquetas HTML</a></item>
+      <item><a href="#subtitulo">Subtitulo</a></item>
+      <item><a href="#nodo">Nodo</a></item>
+      <item><a href="#divisor">Divisor</a></item>
+      <item><a href="#texto">Texto</a></item>
+      <item><a href="#resaltado">Resaltado</a></item>
+      <item><a href="#listas">Listas</a></item>
+      <item><a href="#box">Box</a></item>
+      <item><a href="#parameters">Parámetros</a></item>
+      <item><a href="#code">Code</a></item>
+      <item><a href="#html">Etiquetas HTML</a></item>
     </list>
 
     <divider />
 
-
     <!-- Titulo -->
-    <!-- <div style="background-color: #FAFAFA" id="Titulo"> -->
     <subtitle>Título</subtitle>
     <text>
       Se puede utilizar la etiqueta <mono>title</mono> para indicar que el texto ingresado es un titular.
@@ -39,180 +37,164 @@
     <example>
       <title>Esto es un título</title>
     </example>
-      <!-- <text>
-        Resultado:
-      </text> -->
       
       
-      
-  
+    <divider />
 
-  <divider />
 
     <!-- Subtitulo -->
-    <div style="background-color: #FAFAFA" id="Subtitulo">
-      <method>Subtitulo</method>
-      <text>
-        Se puede utilizar la etiqueta <mono>subtitle</mono> para indicar que el texto ingresado es un subtitulo.
-      </text>
-      <text>
-        Ejemplo:
-      </text>
+    <subtitle>Subtitulo</subtitle>
+    <text>
+      Se puede utilizar la etiqueta <mono>subtitle</mono> para indicar que el texto ingresado es un subtitulo.
+    </text>
+    <text>
+      Ejemplo:
+    </text>
 <code>
 &lt;subtitle&gt;Esto es un título&lt;/subtitle&gt;
 </code>
-      <text>
-        Resultado:
-      </text>
-      <text>
-        <subtitle>Esto es un Subtitulo</subtitle>
-      </text>
-    </div>
+    <example>
+      <subtitle>Esto es un Subtitulo</subtitle>
+    </example>
+
+
+    <divider />
 
 
     <!-- Nodo -->
-    <div style="background-color: #FAFAFA" id="Nodo">
-      <method>Nodo</method>
-      <text>
-        Se puede utilizar la etiqueta <mono>method</mono> para indicar que el texto ingresado es un nodo.
-      </text>
-      <text>
-        Ejemplo:
-      </text>
+    <subtitle>Nodo</subtitle>
+    <text>
+      Se puede utilizar la etiqueta <mono>method</mono> para indicar que el texto ingresado es un nodo.
+    </text>
+    <text>
+      Ejemplo:
+    </text>
 <code>
 &lt;method&gt;Esto es un nodo&lt;/method&gt;
 </code>
-      <text>
-        Resultado:
-      </text>
-      <text>
-        <method>Esto es un nodo</method>
-      </text>
-    </div>
+    <example>
+      <method>Esto es un nodo</method>
+    </example>
+
+
+    <divider />
 
 
     <!-- Divisor -->
-    <div style="background-color: #FAFAFA" id="Divisor">
-      <method>Divisor</method>
-      <text>
-        Se puede utilizar la etiqueta <mono>divider</mono> para insertar un divisor en el documento. El mismo se generará en forma conjunta con un asterisco celeste.
-      </text>
-      <text>
-        Ejemplo:
-      </text>
+    <subtitle>Divisor</subtitle>
+    <text>
+      Se puede utilizar la etiqueta <mono>divider</mono> para insertar un divisor en el documento. El mismo se generará en forma conjunta con un asterisco celeste.
+    </text>
+    <text>
+      Ejemplo:
+    </text>
 <code>
 &lt;divider /&gt;
 </code>
-      <text>
-        Resultado:
-      </text>
-      <text>
-        <divider />
-      </text>
-    </div>
+    <example>
+      <divider />
+    </example>
+
+
+    <divider />
 
 
     <!-- Texto -->
-    <div style="background-color: #FAFAFA" id="Texto">
-      <method>Texto</method>
-      <text>
-        Se puede utilizar la etiqueta <mono>text</mono> para introducir texto en su formato estándar dentro del documento. Dentro de este recurso, se pueden utilizar las etiquetas definidas en HTML.
-      </text>
-      <text>
-        Ejemplo:
-      </text>
+    <subtitle>Texto</subtitle>
+    <text>
+      Se puede utilizar la etiqueta <mono>text</mono> para introducir texto en su formato estándar dentro del documento. Dentro de este recurso, se pueden utilizar las etiquetas definidas en HTML.
+    </text>
+    <text>
+      Ejemplo:
+    </text>
 <code>
 &lt;text&gt;Esto es un texto estandar &lt;strong&gt;con negrita&lt;strong&gt; .&lt;/text&gt;
 </code>
-      <text>
-        Resultado:
-      </text>
+    <example>
       <text>
         <text>Esto es un texto estandar <strong>con negrita</strong></text>
       </text>
-    </div>
+    </example>
 
+
+    <divider />
 
 
     <!-- Resaltado -->
-    <div style="background-color: #FAFAFA" id="Resaltado">
-      <method>Resaltado</method>
-      <text>
-        Se puede utilizar la etiqueta <mono>mono</mono> para resaltar alguna palabra o fragmento de texto.
-      </text>
-      <text>
-        Ejemplo:
-      </text>
+    <subtitle>Resaltado</subtitle>
+    <text>
+      Se puede utilizar la etiqueta <mono>mono</mono> para resaltar alguna palabra o fragmento de texto.
+    </text>
+    <text>
+      Ejemplo:
+    </text>
 <code>
 Esta es la documentación de &lt;mono&gt;Modlayer&lt;/mono&gt;
 </code>
-      <text>
-        Resultado:
-      </text>
+    <example>
       <text>
         Esta es la documentación de <mono>Modlayer</mono>
       </text>
-    </div>
+    </example>
+
+
+    <divider />
 
 
     <!-- Listas -->
-    <div style="background-color: #FAFAFA" id="Listas">
-      <method>Listas</method>
-      <text>
-        Se puede utilizar la etiqueta <mono>list</mono> para generar una lista. Luego, se debe indicar cada item con la etiqueta <mono>item</mono>
-      </text>
-      <text>
-        Ejemplo:
-      </text>
+    <subtitle>Listas</subtitle>
+    <text>
+      Se puede utilizar la etiqueta <mono>list</mono> para generar una lista. Luego, se debe indicar cada item con la etiqueta <mono>item</mono>
+    </text>
+    <text>
+      Ejemplo:
+    </text>
 <code>
 <list>
-  <item><mono>Apache</mono></item>
-  <item><mono>PHP</mono></item>
-  <item><mono>MySQL</mono></item>
+  <item>Apache</item>
+  <item>PHP</item>
+  <item>MySQL</item>
 </list>
 </code>
-      <text>
-        Resultado:
-      </text>
+    <example>
       <list>
-        <item><mono>Apache</mono></item>
-        <item><mono>PHP</mono></item>
-        <item><mono>MySQL</mono></item>
+        <item>Apache</item>
+        <item>PHP</item>
+        <item>MySQL</item>
       </list>
-    </div>
+    </example>
+
+
+    <divider />
 
 
     <!-- Box -->
-    <div style="background-color: #FAFAFA" id="Box">
-      <method>Box</method>
-      <text>
-        Se puede utilizar la etiqueta <mono>box</mono> para resaltar alguna palabra o fragmento de texto dentro de un panel celeste.
-      </text>
-      <text>
-        Ejemplo:
-      </text>
+    <subtitle>Box</subtitle>
+    <text>
+      Se puede utilizar la etiqueta <mono>box</mono> para resaltar alguna palabra o fragmento de texto dentro de un panel celeste.
+    </text>
+    <text>
+      Ejemplo:
+    </text>
 <code>
 &lt;box&gt;Esta es la documentación de Modlayer&lt;/box&gt;
 </code>
-      <text>
-        Resultado:
-      </text>
-      <text>
-        <box>Esta es la documentación de Modlayer</box>
-      </text>
-    </div>
+    <example>
+      <box>Esta es la documentación de Modlayer</box>
+    </example>
 
+
+    <divider />
 
 
     <!-- Parameters -->
-    <div style="background-color: #FAFAFA" id="Parameters">
-      <method>Parámetros</method>
-      <text>
-        Se puede utilizar la etiqueta <mono>parameters</mono> para generar una tabla con parámetros utilizados en alguna seccion. Cada parámetro se define con la etiqueta <mono>param</mono>, en donde se deben especificar los atributos que posee. Se utiliza la etiqueta <mono>name</mono> para indicar el nombre, el tipo con la etiqueta <mono>type</mono>, en caso de ser requerido utilizar la etiqueta <mono>required</mono> y por ultimo, la descripcion indicarla dentro de la etiqueta <mono>desc</mono>.
-      </text>
-      <text>
-        Ejemplo:
-      </text>
+    <subtitle>Parámetros</subtitle>
+    <text>
+      Se puede utilizar la etiqueta <mono>parameters</mono> para generar una tabla con parámetros utilizados en alguna seccion. Cada parámetro se define con la etiqueta <mono>param</mono>, en donde se deben especificar los atributos que posee. Se utiliza la etiqueta <mono>name</mono> para indicar el nombre, el tipo con la etiqueta <mono>type</mono>, en caso de ser requerido utilizar la etiqueta <mono>required</mono> y por ultimo, la descripcion indicarla dentro de la etiqueta <mono>desc</mono>.
+    </text>
+    <text>
+      Ejemplo:
+    </text>
 <code>
 <parameters>
   <param>
@@ -235,9 +217,7 @@ Esta es la documentación de &lt;mono&gt;Modlayer&lt;/mono&gt;
   </param>
 </parameters>
 </code>
-      <text>
-        Resultado:
-      </text>
+    <example>
       <parameters>
         <param>
           <name>call</name>
@@ -258,19 +238,20 @@ Esta es la documentación de &lt;mono&gt;Modlayer&lt;/mono&gt;
           <desc>Cantidad de ítems por página.<br/>Valor por defecto: 10</desc>
         </param>
       </parameters>
-    </div>
+    </example>
 
+
+    <divider />
 
 
     <!-- Code -->
-    <div style="background-color: #FAFAFA" id="Code">
-      <method>Code</method>
-      <text>
-        Se puede utilizar la etiqueta <mono>code</mono> para mostrar fragmentos de código. El sistema detecta automáticamente el lenguaje utilizado y en base a eso coloca los colores a las etiquetas utilizadas. Se debe prestar especial atencion a las etiquetas que representen caracteres reservados. Por ejemplo: para ingresar el caracter '&lt;' es necesario hacerlo utilizando su código ASCII.
-      </text>
-      <text>
-        Ejemplo PHP:
-      </text>
+    <subtitle>Code</subtitle>
+    <text>
+      Se puede utilizar la etiqueta <mono>code</mono> para mostrar fragmentos de código. El sistema detecta automáticamente el lenguaje utilizado y en base a eso coloca los colores a las etiquetas utilizadas. Se debe prestar especial atencion a las etiquetas que representen caracteres reservados. Por ejemplo: para ingresar el caracter '&lt;' es necesario hacerlo utilizando su código ASCII.
+    </text>
+    <text>
+      Ejemplo PHP:
+    </text>
 <code>
 $Numero1 = 2;
 $Numero2 = 5
@@ -278,9 +259,7 @@ $sumatoria = Sumatoria($Numero1,$Numero2);
 echo $sumatoria;
 </code>
 
-    <text>
-      Ejemplo XML:
-    </text>
+  <example>
 <code>
 <object id="x">
   <allow>
@@ -295,30 +274,28 @@ echo $sumatoria;
   </params>
 </object>
 </code>
+  </example>
 
-    <text>
-      Ejemplo HTML:
-    </text>
+  <example>
 <code>
 <h3>
   Esto es un ejemplo de codificacion en HTML
 </h3>
 <p>Ejemplo de muestra para un párrafo</p>
 </code>
-  </div>
-  
+  </example>
+
+
+    <divider />
+
 
     <!-- Code -->
-    <div style="background-color: #FAFAFA" id="HTML">
-      <method>Etiquetas HTML</method>
-      <text>
-        Las etiquetas y estructuras HTML tradicionales estan permitidas dentro de Modlayer. Ejemplo: <mono>table</mono>, <mono>br</mono>, <mono>strong</mono>, etc.
-      </text>
+    <subtitle>Etiquetas HTML</subtitle>
+    <text>
+      Las etiquetas y estructuras HTML tradicionales estan permitidas dentro de Modlayer. Ejemplo: <mono>table</mono>, <mono>br</mono>, <mono>strong</mono>, etc.
+    </text>
 
-    </div>
-
-
-
+    <divider />
 
 
   </page>
