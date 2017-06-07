@@ -2,6 +2,82 @@
 <xml>
   <page>
     <title>Módulo</title>
+
+    <text>
+      Dentro del directorio modlayer/modules se encuentran los módulos que componen el sistema. Si se desea agregar un nuevo módulo, se debe crear una carpeta con el nombre y dentro de ella los siguientes componentes:
+    </text>
+
+    <text>
+      <mono>Carpeta Classes</mono>: Esta carpeta contiene los controladores necesarios del módulo. Entre ellos se deben definir los controladores de frontend y backend.
+    </text>
     
+    <text>
+      <mono>Carpeta de dispositivo</mono>: Se debe crear una carpeta por cada tipo de dispositivo. Generalmente, se debe crear por defecto la carpeta Desktop, la cual identifica la codificación a utilizar para dispositivos con resolucion estandar (Computadoras de escritorio, Notebooks, Tablets). También suelen ser utilizadas las carpetas para Smart TV y Mobile (smartphones y dispositivos moviles).
+    </text>
+
+    <text>
+      <mono>Archivo de configuracion</mono>: Se debe crear un archivo que contenga la configuracion del módulo. Allí se definen los controladores que serán utilizados para Backend y Frontend, junto con algunas acciones generales que se pueden realizar (editar, crear nuevo, etc.). Una parte importante de este archivo de configuración es la definicion de las URL que se pueden recibir. Cuando se intenta acceder a una ruta indicada, se busca dentro del archivo de configuracion del módulo. En caso de que ella exista y cumpla con las expresiones regulares indicadas, se ejecutan los eventos de control definidos (no excluyente) y se define la accion correspondiente dentro del controlador. A continuacion se deja el ejemplo de un archivo de configuración:
+    </text>
+
+    <code>
+<!-- Definicion de namespace y controladores -->
+<module active="1" name="company" title="Organizaciones" parent_name="companies" path="/modules/company" model="CompanyModel" backend_controller="CompanyBackend" frontend_controller="CompanyFrontend">
+
+	<!-- Opciones del módulo -->
+	<options>
+
+		<!-- Funciones básicas para ser mostradas en backend -->
+		<group name="navigation" label="Organizaciones" order="10" group="content">
+			<option name="item" label="Listar" url="list" access_level=""/>
+			<option name="item" label="Nuevo"  url="add" access_level=""/>
+		</group>
+
+		<!-- Definicion de niveles de acceso -->
+		<group name="settings">
+			<option name="access_level" value="all" />
+		</group>
+		
+		<!-- Vinculo a otros módulos -->
+		<group name="multimedias">
+			<option name="image" type_id="1" label="Logos" category_id=""/>
+		</group>
+
+		<!-- Eventos que se pueden definir antes de ejecutar el metodo en el controlador -->
+		<group name="events">
+			<event name="Company.RenderAdd" handler_class="RoleAccess" handler_method="RenderAdd" priority="9" />
+			<event name="Company.renderInvitation" handler_class="RoleAccess" handler_method="checkCompany" priority="15" />
+			<event name="Company.sendInvitation" handler_class="RoleAccess" handler_method="checkCompany" priority="15" />
+			<event name="Company.editInvitation" handler_class="RoleAccess" handler_method="checkCompany" priority="15" />
+			<event name="Company.deleteInvitation" handler_class="RoleAccess" handler_method="checkCompany" priority="15" />
+		</group>
+
+	</options>
+
+	<!-- Reglas de Rewrite -->
+	<rewrite debug="0">
+
+		<!-- Rutas de accesos a métodos para Frontedn -->
+		<frontend>
+			<rule 
+				  match="\/company\/([0-9]+)-(.*)\/edit\/?$" 
+				  apply="RenderEditCompany" 
+				  args="id=$1"
+			/>
+			<rule 
+				  match="\/company\/edit\/\?cID=([0-9]+)$" 
+				  apply="RenderEditCompany" 
+				  args="id=$1"
+			/>
+			<rule 
+				match="\/company\/edit\/general\/save$" 
+				apply="EditCompanyGeneral" 
+				args=""
+			/>
+		</frontend>
+	</rewrite>
+</module>
+
+    </code>
+
   </page>
 </xml>
