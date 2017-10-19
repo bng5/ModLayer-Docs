@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 	<applicationID>ModLayer Docs</applicationID>
-	<smtp>smtp.sendgrid.net</smtp>
+	<smtp>
+		<smtp_host>smtp.sendgrid.net</smtp_host>
+		<smtp_port>587</smtp_port>
+		<smtp_user>teamfloat</smtp_user>
+		<smtp_pass>float1001</smtp_pass>
+	</smtp>
+	<release>1.2.1</release>
 
+	<!-- 
+	Domain for this enviroment
+	@subdir : SubFolder within the root directory, where the system is running (first slash '/' is required) 
+	-->
 	<domain>http://local.doc</domain>
-	<images_domain>http://local.doc</images_domain>
+	<assets_domain>http://local.doc</assets_domain>
+	<content_domain>http://local.doc</content_domain>
+	<images_dir>/content/images</images_dir>
+
+	<!-- 
+	This configuration must match the frontend rewrite rule
+	for this service
+	-->
+	<images_bucket>/content/bucket</images_bucket>
 	<!-- <domain>http://docs.modlayer.com</domain>
 	<images_domain>http://docs.modlayer.com</images_domain> -->
 	<timezone>America/Buenos_Aires</timezone>
@@ -22,6 +40,11 @@
 	<autoload>
 	</autoload>
 
+	<errorReporting>
+		<screen enabled="false"/>
+		<email enabled="true" destination="cromano@float.la" sender="noreply@modlayer.org" sendername="Vind Desarrollo"/>
+	</errorReporting>
+
 	<devices>
 		<device name="desktop" directory="desktop" default="1"/>
 		<device name="generic" directory="desktop"/>
@@ -36,12 +59,12 @@
 			/>
 			<rule
 				 match="(\/|\/index.php)$"
-				 apply="DisplayResource"
+				 apply="RenderResource"
 				 args="url=home"
 			/>
 			<rule
 				 match="\/(.*)\.(xml|html)(.*)"
-				 apply="DisplayResource"
+				 apply="RenderResource"
 				 args="url=$1&amp;%{QUERY_STRING}"
 			/>
 			

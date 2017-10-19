@@ -5,6 +5,23 @@
 	<version>1.0</version>
 	<author>Float.la</author>
 
+	<pathinfo>
+		<path baseStyleSheet="true" value="/xsl/core/layout.xsl" />
+		<path always="false" value="/xsl/core/header.xsl" />
+		<path always="false" value="/xsl/core/footer.xsl" />
+		<path always="true" value="/xsl/core/components.xsl" />
+		<path always="true" value="/xsl/core/templates.xsl" />
+
+		<!-- <path always="true" value="/xsl/lib/components.xsl" />
+		<path always="true" value="/xsl/lib/html.xsl" />
+		<path always="true" value="/xsl/lib/m.image.xsl" />
+		<path always="true" value="/xsl/lib/m.docs.xsl" />
+		<path always="true" value="/xsl/lib/m.audio.xsl" />
+		<path always="true" value="/xsl/lib/m.video.xsl" />
+		<path always="true" value="/xsl/lib/pagination.xsl" />
+		<path always="true" value="/xsl/lib/url.xsl" />
+		<path always="false" value="/xsl/lib/html.external.xsl" /> -->
+	</pathinfo>
 	
 	<header>
 		<!-- <script>https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js</script> -->

@@ -173,9 +173,10 @@ class Templates {
 	* Add a stylesheet from the current running module directory
 	* @param file: name of the file to load
 	**/
-	public function add($templatename)
+	public function add($templatename, $xslFolder=false)
 	{
-		array_push($this->templates,$this->dirname.'/'.$this->device.'/xsl/'.$templatename);
+		$dir = (!$xslFolder) ? '/xsl/' : '';
+		array_push( $this->templates , $this->dirname . '/' . $this->device . $dir . $templatename );
 	}
 
 	/**

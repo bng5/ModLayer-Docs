@@ -3,9 +3,13 @@ class Application {
 
 	private static $_Paths = array();
 	private static $_ApplicationPath;
-	private static $_TemporaryPath = null;
 	private static $_ApplicationID = null;
 	private static $_frontend = false;
+	private static $_module   = false;
+	private static $_MatchedRule = false;
+
+	
+	
 	
 	public static function SetLang($lang)
 	{
@@ -110,22 +114,25 @@ class Application {
 	/*
 		Send Email
 	*/
-	public static function SendEmail($address, $html, $subject)
+	public static function SendEmail($address, $html, $subject, $rtte=false)
 	{
-		
-
 		$mail = new PHPMailer(true);
-		$mail->IsSMTP(); // telling the class to use SMTP
 		
 		try {
-			$mail->Host = Configuration::Query("/configuration/smtp/host")->item(0)->nodeValue; // SMTP server
-			$mail->Port = Configuration::Query("/configuration/smtp/port")->item(0)->nodeValue; // Set the SMTP port
-			$mail->SMTPAuth = true;
+			$mail->Host = Configuration::Query("/configuration/smtp/smtp_host")->item(0)->nodeValue; // SMTP server
+			$mail->Port = Configuration::Query("/configuration/smtp/smtp_port")->item(0)->nodeValue; // Set the SMTP port
+			
 			$mail->CharSet  = 'UTF-8';
-			$mail->Username = Configuration::Query("/configuration/smtp/user")->item(0)->nodeValue;
-			$mail->Password = Configuration::Query("/configuration/smtp/pass")->item(0)->nodeValue;
 
-	
+			$username = Configuration::Query("/configuration/smtp/smtp_user");
+			$userpass = Configuration::Query("/configuration/smtp/smtp_pass");
+			if($username && $userpass){
+				$mail->IsSMTP(); // telling the class to use SMTP
+				$mail->SMTPAuth = true;
+				$mail->Username = $username->item(0)->nodeValue;
+				$mail->Password = $userpass->item(0)->nodeValue;
+			}
+
 			if(is_array($address)) {
 				foreach($address as $recipient) {
 					$mail->AddAddress($recipient);
@@ -135,17 +142,18 @@ class Application {
 				$mail->AddAddress($address);
 			}
 
+			$rtte = ($rtte !== false) ? $rtte . ' ' : '';
+			$rtte .= Configuration::GetSenderName();
 
-			$from = Configuration::Query("/configuration/smtp/from")->item(0);
-			$mail->SetFrom($from->nodeValue, $from->getAttribute('name'));
+			$mail->SetFrom(Configuration::GetSender(), $rtte);
 			$mail->Subject = $subject;
-
+			// $mail->MsgHTML(utf8_decode($html));
 			$mail->MsgHTML($html);
 			$mail->Send();
 		}
 		catch (Exception $e)
 		{
-			echo $e->getMessage(); // El mensaje no se pudo enviar
+			// echo $e->getMessage(); // El mensaje no se pudo enviar
 		}
 	}
 
@@ -209,5 +217,19 @@ class Application {
 		}
 	}
 	
+
+	/*
+		La regla de rewrite matcheada se guarda localmente para 
+		ser utilizada despues
+	*/
+	public static function SetMatchedRule($rule)
+	{
+		self::$_MatchedRule = $rule;
+	}
+
+	public static function GetMatchedRule()
+	{
+		return self::$_MatchedRule;
+	}
 }
 ?>

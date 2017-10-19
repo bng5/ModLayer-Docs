@@ -11,7 +11,7 @@ set_include_path($php);
 spl_autoload_extensions('.php');
 spl_autoload_register();
 
-ini_set("memory_limit","128M");
+ini_set("memory_limit","256M");
 
 
 /**
@@ -28,11 +28,14 @@ PathManager::SetApplicationPath(dirname(dirname(__FILE__)));
 */
 Configuration::LoadConfiguration();
 
+
 /**
 *	We will handle Errors
 */
 set_error_handler(array('MLError', 'ErrorHandler'));
 set_exception_handler(array('MLError', 'ExceptionHandler'));
+// register_shutdown_function(array('MLError', 'ShutdownHandler'));
+
 
 /**
 *	default timezone should be in configuration

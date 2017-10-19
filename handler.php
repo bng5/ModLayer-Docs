@@ -1,46 +1,26 @@
 <?php
-Class FrontEnd {
+Class Handler {
 	
-	public static function DisplayDefault()
-	{	
-		$skin = Skin::Load();
 
-		$version   = Application::Version();
-		$tree      = Application::Tree($version);
-		
-		$home      = $version . '/home.xml';
-		$nav       = $version . '/nav.xml';
-		
-		$skin->setcontent($home, '/xml/*', null);
-		$skin->setcontext($tree, null, 'tree');
-		$skin->setcontext(Application::GetVersions(), null, 'versions');
-		$skin->setcontext($nav, '/nav', null);
-
-		$skin->add('page.xsl');
-		$skin->display();
-	}
-
-	public static function DisplayResource()
+	public static function RenderResource()
 	{
 		$url    = Util::RuleParam('url');
-
 		$url = $url . '.xml';
-
-		
-		self::DisplayPage($url);
+		self::RenderPage($url);
 	}
 
-	public static function DisplayPage($xml)
+	public static function RenderPage($xml)
 	{
-		$skin = Skin::Load();
+		$skin      = new Skin();
 		$version   = Application::Version();
 		$nav       = $version . '/nav.xml';
 		
+
 		// Archivo con el contenido
 		$xmlCont   = $version . '/' . $xml;
 
 		if(!file_exists($xmlCont))
-			Util::redirect('/not-found/404/?url=' . $xml);
+			Frontend::RenderNotFound();
 		
 		$skin->setcontent(
 			$xmlCont, 
@@ -95,18 +75,7 @@ Class FrontEnd {
 				$skin->display();
 				break;
 		}
-
 		die;
-		if($format == 'json')
-		{
-			
-		}
-		else
-		{
-			header("Content-Type: text/xml; charset=UTF-8");
-			$skin->display();
-			die;
-		}
 	}
 
 
@@ -159,6 +128,13 @@ Class FrontEnd {
 		Application::SetVersion($ver);
 		Util::redirect('/');
 	}
+
+	// public static function FrontSetVersion()
+	// {
+	// 	$ver = Util::getvalue('v');
+	// 	Application::SetVersion($ver);
+	// 	Util::redirect('/');
+	// }	
 	
 }
 ?>

@@ -5,12 +5,12 @@ class Configuration
 	protected static $_configurationEnabled = null;
 	protected static $dom;
 	protected static $_ApplicationID = null;
+	protected static $_ErrorReportingInitialized = false;
 
 
 	public static function ConfigurationEnabled()
 	{
-		if (!isset(self::$_configurationEnabled)){
-
+		if (!isset(self::$_configurationEnabled)) {
 			self::$_configurationEnabled = (self::GetConfigFile()) ? true : false;
 		}
 		return self::$_configurationEnabled;
@@ -18,7 +18,7 @@ class Configuration
 	
 	public static function GetConfigFile()
 	{
-		$file = dirname(dirname(__FILE__)) . '/configuration.xml';
+		$file = Util::DirectorySeparator(dirname(dirname(__FILE__)) . '/configuration.xml');
 		if(file_exists($file) && XMLDoc::validate($file)){
 			return $file;
 		}else{
@@ -40,7 +40,7 @@ class Configuration
 		if(self::ConfigurationEnabled())
 		{
 			$file = self::GetConfigFile();
-			$domDoc = new DOMDocument("1.0", "UTF-8");
+			$domDoc = new XMLDom();
 			$domDoc->load($file);
 			$domDoc->formatOutput = true;
 			$modules = $domDoc->createElement('modules'); // This is where we'll insert each modules config.
@@ -54,7 +54,7 @@ class Configuration
 		if(self::ConfigurationEnabled())
 		{
 			if($xml){
-				$source = new DOMDocument("1.0", "UTF-8");
+				$source = new XMLDom();
 				$dom_sxe = $source->importNode($xml, true);
 				$source->appendChild($dom_sxe);			
 			}else{
@@ -69,6 +69,60 @@ class Configuration
 				return $result;
 			}
 		}
+	}
+
+	public static function InitializeErrorReporting()
+	{
+		if (!self::$_ErrorReportingInitialized)
+		{
+
+			if (!self::ConfigurationEnabled())
+			{
+				MLError::SetScreen(true, false);
+			}
+			else
+			{
+
+				$screen = self::Query('/configuration/errorReporting/screen');
+				if ($screen && $screen->item(0)->getAttribute('enabled') == 'true')
+				{
+					MLError::SetScreen(true);
+				}
+				else
+				{
+					MLError::SetScreen(false);
+				}
+				
+				$email = self::Query('/configuration/errorReporting/email');
+
+				if ($email && $email->item(0)->getAttribute('enabled') == 'true')
+				{
+					MLError::SetEMail(true);
+				}else{
+					MLError::SetEMail(false);
+				}
+
+			}
+			self::$_ErrorReportingInitialized = true;
+		}
+	}
+
+	public static function GetEmails()
+	{
+		$destination = self::Query('/configuration/errorReporting/email');
+		return $destination->item(0)->getAttribute('destination');
+	}
+
+	public static function GetSender()
+	{
+		$sender = self::Query('/configuration/errorReporting/email');
+		return $sender->item(0)->getAttribute('sender');
+	}
+	
+	public static function GetSenderName()
+	{
+		$sender = self::Query('/configuration/errorReporting/email');
+		return $sender->item(0)->getAttribute('sendername');
 	}
 
 }

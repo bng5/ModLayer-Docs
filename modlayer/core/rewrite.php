@@ -8,7 +8,7 @@ Class Rewrite
 		$rules = Configuration::Query('/configuration/rewrite/frontend/rule');
 		if($rules)
 		{
-			$controller = 'FrontEnd';
+			$controller = 'Handler';
 
 			if(isset($rules->length))
 			{
@@ -30,7 +30,7 @@ Class Rewrite
 			$subject = str_replace('/' . $subdir->item(0)->nodeValue, '', $subject); 
 		}
 
-		Skin::FrontDisplayNotFound();
+		Frontend::RenderNotFound();
 	}
 
 	public static function MatchRule($rule, $controller)
